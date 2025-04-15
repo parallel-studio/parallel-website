@@ -1,0 +1,28 @@
+.custom_column_images_grid {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+  margin: 0 auto;
+
+  @media (--mobile) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 768px) {
+    width: var(--grid-width);
+  }
+
+  .custom_column_images_grid__item {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+}

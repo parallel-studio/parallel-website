@@ -1,0 +1,114 @@
+.modal_player {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  padding: var(--layout-margin);
+  media-play-button {
+    background: transparent;
+    display: none !important;
+  }
+
+  mux-player::part(center play button pre-play) {
+    background: transparent;
+    display: none !important;
+  }
+  mux-player {
+    --rendition-menu-button: none;
+    --live-button: none;
+    --seek-backward-button: none;
+    --seek-forward-button: none;
+    --captions-button: none;
+    --airplay-button: none;
+    --pip-button: none;
+    --cast-button: none;
+    --playback-rate-button: none;
+    --time-display: none;
+    --duration-display: none;
+    --dialog: none;
+    --media-object-fit: contain !important;
+
+    &[data-mux-player-react-lazy-placeholder],
+    > [data-mux-player-react-lazy-placeholder-overlay] {
+      background-color: var(--logo-color);
+      inline-size: 100%;
+      block-size: 100%;
+    }
+
+    video {
+      object-fit: contain;
+    }
+  }
+}
+
+.modal_player__wrapper {
+  opacity: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close_icon {
+  position: absolute;
+  top: desktop-vw(20px);
+  right: desktop-vw(20px);
+  cursor: pointer;
+  color: white;
+  font-size: desktop-vw(20px);
+  z-index: 1;
+}
+
+.player {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Classes pour le fallback si nécessaire */
+@media (max-width: 768px) {
+  .modal_player__wrapper {
+    width: 90vw !important;
+    height: auto !important;
+  }
+}
+
+/* Nouvelle media query pour gérer les écrans intermédiaires (tablettes, petits laptops) */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .modal_player__wrapper {
+    width: 85vw !important;
+    height: auto !important;
+    max-height: 85vh !important;
+    margin: 0 auto;
+  }
+  
+  .modal_player {
+    padding: 1.5rem;
+  }
+}
+
+.full_screen__horizontal {
+  width: 90svw;
+  height: auto;
+
+  @include-media ('mobile') {
+    width: auto;
+    height: auto;
+  }
+}
+.full_screen__vertical {
+  height: 90svh;
+  width: auto;
+  @include-media ('mobile') {
+    width: auto;
+    height: auto;
+  }
+}

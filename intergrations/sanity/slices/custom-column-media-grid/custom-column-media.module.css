@@ -1,0 +1,79 @@
+.custom_column_images_grid {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+  margin: 0 auto;
+
+  @media (--mobile) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 768px) {
+    width: var(--grid-width);
+  }
+
+  .custom_column_images_grid__item {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      margin: 0 auto;
+    }
+  }
+
+  mux-player::part(center play button pre-play) {
+    background: transparent;
+    display: none !important;
+  }
+  
+  .autoplayMode {
+    --play-button: none !important;
+    --volume-range: none !important;
+    --volume-button: none !important;
+    --time-range: none !important;
+    --fullscreen-button: none !important;
+    --rendition-menu-button: none !important;
+    --control-bar: none !important;
+  }
+  
+  mux-player {
+    --rendition-menu-button: none;
+    --live-button: none;
+    --seek-backward-button: none;
+    --seek-forward-button: none;
+    --captions-button: none;
+    --airplay-button: none;
+    --pip-button: none;
+    --cast-button: none;
+    --playback-rate-button: none;
+    --time-display: none;
+    --duration-display: none;
+    --dialog: none;
+    --media-object-fit: cover !important;
+    margin: 0 auto;
+    width: 100%;
+
+    &[data-mux-player-react-lazy-placeholder],
+    > [data-mux-player-react-lazy-placeholder-overlay] {
+      background-color: var(--logo-color);
+      inline-size: 100%;
+      block-size: 100%;
+    }
+
+    video {
+      object-fit: cover;
+      margin: 0 auto;
+    }
+  }
+}

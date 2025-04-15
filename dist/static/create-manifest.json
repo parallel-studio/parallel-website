@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "createdAt": "2025-04-07T19:26:30.927Z",
+  "workspaces": [
+    {
+      "name": "default",
+      "title": "Parallel Studio",
+      "basePath": "/studio",
+      "projectId": "mpdoqq1v",
+      "dataset": "production",
+      "icon": "<style data-styled-version=\"6.1.15\" data-styled=\"true\">.gHaMlA{font-family:Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",\"Liberation Sans\",Helvetica,Arial,system-ui,sans-serif;font-weight:500;font-size:13px;transform:translateY(1px);}/*!sc*/\ndata-styled.g112[id=\"sc-eiwqOE\"]{content:\"gHaMlA,\"}/*!sc*/\n</style><svg viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\"><rect fill=\"#cc2819\" rx=\"2\" height=\"32\" width=\"32\"></rect><text class=\"sc-eiwqOE gHaMlA\" fill=\"hsla(5, 78%, 5%, 1)\" alignment-baseline=\"middle\" text-anchor=\"middle\" y=\"50%\" x=\"50%\">PS</text></svg>",
+      "schema": "d13fd310.create-schema.json",
+      "tools": "930c80d8.create-tools.json"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+@use '@/styles/_media.scss' as media;
+
+.footer {
+  display: flex;
+  position: sticky;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  z-index: 0;
+  transition: all 0.3s ease-in-out;
+  padding-inline: 40px;
+  padding-block-start: calc(40px * 1.5);
+  padding-block-end: 20px;
+  block-size: max(400px, 50svh);
+  min-block-size: 50svh;
+  font-size: 0.875em;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-row: auto;
+  gap: 2ch;
+}
+
+.legal {
+  color: #999;
+  font-weight: 300;
+}
+
+.link {
+  font-size: clamp(1.65rem, 2.625rem, 3.5vw);
+  line-height: 1.15;
+  display: flex !important;
+  align-items: flex-start;
+}
+
+.link__hidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.link:hover {
+  svg {
+    transform: translate3d(-0.25rem, 0, 0);
+    transition: transform 0.7s ease-out 0.1s;
+  }
+}
+
+.link:not(:hover) {
+  svg {
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.5s ease-out 0.1s;
+  }
+}
+
+.connect {
+}
+
+.connect__title {
+  font-size: 0.625rem;
+  color: #cecece;
+  text-transform: uppercase;
+}
+
+.connect__links {
+  font-weight: 300;
+  font-size: 1.225rem;
+  line-height: 1.35;
+}
+.connect__link {
+  transition: color 0.4s ease-in-out;
+  transition-delay: 0.1s;
+}
+.connect__link:hover {
+  color: #cecece;
+}

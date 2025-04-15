@@ -1,0 +1,30 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  position: sticky;
+  z-index: 2;
+  width: 100%;
+  justify-content: space-between;
+  align-items: start;
+  padding-top: var(--spacing-safe);
+  padding-left: var(--spacing-safe);
+  padding-right: var(--spacing-safe);
+  top: 0;
+  background: white;
+
+  .list {
+    font-family: var(--font-inter);
+    font-weight: 500;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    /*font-size: desktop-vw(16px);*/
+    font-size: clamp(0.625rem, min(1rem, 3.5svw), 3rem) !important;
+
+    @include-media ('mobile') {
+      font-size: mobile-vw(12px);
+    }
+  }
+}

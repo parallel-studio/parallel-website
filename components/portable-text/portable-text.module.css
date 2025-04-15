@@ -1,0 +1,45 @@
+.link {
+  display: flex;
+  align-items: center;
+  svg {
+    transform: rotate(180deg);
+    transition: transform 0.5s ease-out 0.1s;
+  }
+}
+
+.link_large {
+  font-size: clamp(1.65rem, 2.625rem, 3.5vw);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.link_small {
+  font-size: 1rem;
+  line-height: 1.15;
+  font-weight: 500;
+}
+
+.link:hover {
+  svg {
+    transform: rotate(180deg) translate3d(-0.25rem, 0, 0);
+  }
+}
+
+.subtitle {
+  color: #606060;
+  font-size: x-small;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+.rich_text_h1 {
+  font-size: min(max(1.25rem, 1.6254vw), 3.5rem);
+  line-height: 1.15;
+}
+.rich_text_h2 {
+  font-size: min(max(1.25rem, 1.6254vw), 2.5rem);
+  line-height: 1.15;
+}
+
+.rich_text_h3 {
+  font-size: min(max(1rem, 1.3014vw), 1.625rem);
+}

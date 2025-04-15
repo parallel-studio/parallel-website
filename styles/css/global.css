@@ -1,0 +1,97 @@
+/* GLOBAL CSS FILE - Contains global styles that shouldn't be reset */
+
+html {
+  --scrollbar-gutter: 0px;
+
+  &.lenis-stopped {
+    --scrollbar-gutter: var(--scrollbar-width);
+  }
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+  overscroll-behavior: none;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*::selection {
+  background-color: var(--logo-color);
+  color: var(--color-primary);
+}
+
+/* SVG icon colors */
+svg.icon {
+  path[fill],
+  rect[fill],
+  circle[fill] {
+    fill: currentColor;
+  }
+  path[stroke],
+  rect[stroke],
+  circle[stroke] {
+    stroke: currentColor;
+  }
+}
+
+/* Hover states */
+.link {
+  @media (--hover) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Focus states */
+*:focus-visible {
+  outline: 2px solid var(--color-contrast);
+}
+
+.link_underline {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    bottom: -2.5px;
+    left: 0%;
+    transition: width 0.3s ease;
+    background-color: var(--logo-color);
+    width: 0;
+    height: 1.5px;
+    content: "";
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after,
+  &[aria-current="page"]::after {
+    width: 100%;
+  }
+  &__active::after {
+    width: 100%;
+  }
+}
+
+.link-underline__active {
+  &::after {
+    width: 100%;
+  }
+}
+
+.rich_text-h2 {
+  font-size: min(max(1.25rem, 1.6254vw), 3.5rem);
+  line-height: 1.15;
+}
+
+.rich_text-h3 {
+  font-size: min(max(1rem, 1.3014vw), 2.625rem);
+}

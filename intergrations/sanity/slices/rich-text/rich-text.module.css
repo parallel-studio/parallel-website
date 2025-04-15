@@ -1,0 +1,5 @@
+.rich_text {
+  position: relative;
+  padding: desktop-vw(80px);
+  line-height: 1.6875;
+}

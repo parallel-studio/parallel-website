@@ -1,0 +1,23 @@
+.layout__full-width {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.layout__two-column {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr;
+  grid-template-rows: 100%;
+
+  @media (--mobile) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.project_hero {
+  height: calc(100svh - desktop-vw(60px));
+
+  @media (--mobile) {
+    height: calc(100svh - mobile-vw(60px));
+  }
+}

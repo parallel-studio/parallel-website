@@ -1,0 +1,84 @@
+.grid_item {
+  opacity: 0;
+  /*flex-grow: 1;*/
+  @media (--mobile) {
+    width: 100% !important;
+  }
+  position: relative;
+}
+
+.grid_item__video {
+  height: 20rem;
+  /*flex-grow: 1;*/
+  /*flex-basis: auto;*/
+  overflow: hidden;
+  position: relative;
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+
+  @media (--mobile) {
+    aspect-ratio: 16 / 9 !important;
+    height: auto;
+    width: 100%;
+  }
+
+  video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .muxPlayer {
+    --controls: none;
+    --dialog: none;
+    --loading-indicator: none;
+    --play-button: none;
+    --live-button: none;
+    --seek-backward-button: none;
+    --seek-forward-button: none;
+    --mute-button: none;
+    --captions-button: none;
+    --airplay-button: none;
+    --pip-button: none;
+    --fullscreen-button: none;
+    --cast-button: none;
+    --playback-rate-button: none;
+    --volume-range: none;
+    --time-range: none;
+    --time-display: none;
+    --duration-display: none;
+    --rendition-menu-button: none;
+    --center-controls: none;
+    --bottom-play-button: none;
+  }
+}
+
+.grid_item__infos {
+  padding-top: desktop-vw(10px);
+}
+.grid_item__poster {
+  @media (--desktop) {
+    display: none;
+  }
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.grid_item__infos__title {
+  /*font-size: var(--font-size-desktop-xlarge);*/
+  /*font-size: desktop-vw(16px);*/
+  /*font-size: clamp(1rem, 1.5vw, 3.5rem);*/
+  font-size: clamp(0.625rem, min(1rem, 3.5svw), 3rem) !important;
+  /*font-size: min(max(1.25rem, 1.6254vw), 3.5rem);*/
+  font-weight: var(--font-weight-medium);
+  @media (--mobile) {
+    font-size: 1rem;
+  }
+}

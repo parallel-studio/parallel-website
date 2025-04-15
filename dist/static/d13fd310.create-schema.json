@@ -1,0 +1,3356 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "name",
+        "type": "slug"
+      }
+    ],
+    "name": "media.tag",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "type",
+        "type": "string"
+      },
+      {
+        "name": "max_width",
+        "type": "number"
+      },
+      {
+        "name": "max_frame_rate",
+        "type": "number"
+      },
+      {
+        "name": "duration",
+        "type": "number"
+      },
+      {
+        "name": "max_height",
+        "type": "number"
+      }
+    ],
+    "name": "mux.track",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "policy",
+        "type": "string"
+      }
+    ],
+    "name": "mux.playbackId",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "ext",
+        "type": "string"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "width",
+        "type": "number"
+      },
+      {
+        "name": "bitrate",
+        "type": "number"
+      },
+      {
+        "name": "filesize",
+        "type": "number"
+      },
+      {
+        "name": "height",
+        "type": "number"
+      }
+    ],
+    "name": "mux.staticRenditionFile",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "status",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "type": "mux.staticRenditionFile"
+          }
+        ],
+        "name": "files",
+        "type": "array"
+      }
+    ],
+    "name": "mux.staticRenditions",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "resolution_tier",
+        "type": "string"
+      },
+      {
+        "name": "upload_id",
+        "type": "string"
+      },
+      {
+        "name": "created_at",
+        "type": "string"
+      },
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "status",
+        "type": "string"
+      },
+      {
+        "name": "max_stored_resolution",
+        "type": "string"
+      },
+      {
+        "name": "passthrough",
+        "type": "string"
+      },
+      {
+        "name": "encoding_tier",
+        "type": "string"
+      },
+      {
+        "name": "master_access",
+        "type": "string"
+      },
+      {
+        "name": "aspect_ratio",
+        "type": "string"
+      },
+      {
+        "name": "duration",
+        "type": "number"
+      },
+      {
+        "name": "max_stored_frame_rate",
+        "type": "number"
+      },
+      {
+        "name": "mp4_support",
+        "type": "string"
+      },
+      {
+        "name": "max_resolution_tier",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "type": "mux.track"
+          }
+        ],
+        "name": "tracks",
+        "type": "array"
+      },
+      {
+        "of": [
+          {
+            "type": "mux.playbackId"
+          }
+        ],
+        "name": "playback_ids",
+        "type": "array"
+      },
+      {
+        "name": "static_renditions",
+        "type": "mux.staticRenditions"
+      }
+    ],
+    "name": "mux.assetData",
+    "type": "object",
+    "title": "Mux asset data"
+  },
+  {
+    "fields": [
+      {
+        "name": "status",
+        "type": "string"
+      },
+      {
+        "name": "assetId",
+        "type": "string"
+      },
+      {
+        "name": "playbackId",
+        "type": "string"
+      },
+      {
+        "name": "filename",
+        "type": "string"
+      },
+      {
+        "name": "thumbTime",
+        "type": "number"
+      },
+      {
+        "name": "data",
+        "type": "mux.assetData"
+      }
+    ],
+    "name": "mux.videoAsset",
+    "type": "object",
+    "title": "Video asset"
+  },
+  {
+    "fields": [
+      {
+        "weak": true,
+        "to": [
+          {
+            "type": "mux.videoAsset"
+          }
+        ],
+        "name": "asset",
+        "type": "reference",
+        "title": "Video"
+      }
+    ],
+    "name": "mux.video",
+    "type": "object",
+    "title": "Video asset reference"
+  },
+  {
+    "options": {
+      "defaultColorFormat": "rgba"
+    },
+    "fields": [
+      {
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "name": "value",
+        "type": "string"
+      }
+    ],
+    "name": "simplerColor",
+    "type": "object"
+  },
+  {
+    "options": {
+      "defaultColorFormat": "rgba"
+    },
+    "fields": [
+      {
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "name": "value",
+        "type": "string"
+      }
+    ],
+    "name": "textColor",
+    "type": "object",
+    "title": "Text color"
+  },
+  {
+    "options": {
+      "defaultColorFormat": "rgba"
+    },
+    "fields": [
+      {
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "name": "value",
+        "type": "string"
+      }
+    ],
+    "name": "highlightColor",
+    "type": "object",
+    "title": "Highlight color"
+  },
+  {
+    "options": {
+      "apiVersion": "2022-11-27"
+    },
+    "validation": [
+      {
+        "rules": [
+          {
+            "flag": "custom"
+          }
+        ],
+        "level": "error"
+      }
+    ],
+    "of": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "type": "internationalizedArrayReferenceValue",
+        "title": "Internationalized array [object Object]"
+      }
+    ],
+    "name": "internationalizedArrayReference",
+    "type": "array",
+    "title": "Internationalized array"
+  },
+  {
+    "fields": [
+      {
+        "weak": false,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "to": [
+          {
+            "type": "home-page-parachutes"
+          },
+          {
+            "type": "home-page-parallel"
+          },
+          {
+            "type": "project-parachutes"
+          },
+          {
+            "type": "project-parallel"
+          },
+          {
+            "type": "page-parachutes"
+          },
+          {
+            "type": "page-parallel"
+          },
+          {
+            "type": "footer-parachutes"
+          },
+          {
+            "type": "footer-parallel"
+          },
+          {
+            "type": "header-parachutes"
+          },
+          {
+            "type": "header-parallel"
+          }
+        ],
+        "name": "value",
+        "type": "reference"
+      }
+    ],
+    "name": "internationalizedArrayReferenceValue",
+    "type": "object",
+    "title": "Internationalized array [object Object]"
+  },
+  {
+    "liveEdit": true,
+    "fields": [
+      {
+        "options": {
+          "apiVersion": "2022-11-27"
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "translations",
+        "type": "internationalizedArrayReference"
+      },
+      {
+        "options": {
+          "list": [
+            "home-page-parachutes",
+            "home-page-parallel",
+            "project-parachutes",
+            "project-parallel",
+            "page-parachutes",
+            "page-parallel",
+            "footer-parachutes",
+            "footer-parallel",
+            "header-parachutes",
+            "header-parallel"
+          ]
+        },
+        "description": "Optional: Used to filter the reference fields above so all translations share the same types.",
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "readOnly": "conditional",
+        "name": "schemaTypes",
+        "type": "array"
+      }
+    ],
+    "name": "translation.metadata",
+    "type": "document",
+    "title": "Translation metadata"
+  },
+  {
+    "options": {
+      "apiVersion": "2022-11-27"
+    },
+    "validation": [
+      {
+        "rules": [
+          {
+            "flag": "custom"
+          }
+        ],
+        "level": "error"
+      }
+    ],
+    "of": [
+      {
+        "type": "internationalizedArrayStringValue",
+        "title": "Internationalized array string"
+      }
+    ],
+    "name": "internationalizedArrayString",
+    "type": "array",
+    "title": "Internationalized array"
+  },
+  {
+    "options": {
+      "apiVersion": "2022-11-27"
+    },
+    "validation": [
+      {
+        "rules": [
+          {
+            "flag": "custom"
+          }
+        ],
+        "level": "error"
+      }
+    ],
+    "of": [
+      {
+        "type": "internationalizedArrayTextValue",
+        "title": "Internationalized array text"
+      }
+    ],
+    "name": "internationalizedArrayText",
+    "type": "array",
+    "title": "Internationalized array"
+  },
+  {
+    "fields": [
+      {
+        "name": "value",
+        "type": "string"
+      }
+    ],
+    "name": "internationalizedArrayStringValue",
+    "type": "object",
+    "title": "Internationalized array string"
+  },
+  {
+    "fields": [
+      {
+        "name": "value",
+        "type": "text"
+      }
+    ],
+    "name": "internationalizedArrayTextValue",
+    "type": "object",
+    "title": "Internationalized array text"
+  },
+  {
+    "fields": [
+      {
+        "name": "language",
+        "type": "string"
+      },
+      {
+        "name": "filename",
+        "type": "string"
+      },
+      {
+        "name": "code",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "type": "number",
+            "title": "Highlighted line"
+          }
+        ],
+        "name": "highlightedLines",
+        "type": "array",
+        "title": "Highlighted lines"
+      }
+    ],
+    "name": "code",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "language",
+        "type": "string"
+      },
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "languageTitle",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "initialValue": false,
+                "description": "Check this box if the link is external",
+                "name": "isExternal",
+                "type": "boolean",
+                "title": "External Link"
+              },
+              {
+                "initialValue": false,
+                "description": "Check this box to open the link in a new tab",
+                "hidden": "conditional",
+                "name": "targetBlank",
+                "type": "boolean",
+                "title": "Open in new tab"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "custom"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "to": [
+                  {
+                    "type": "page-parachutes"
+                  }
+                ],
+                "hidden": "conditional",
+                "name": "page",
+                "type": "reference"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "uri",
+                        "constraint": {
+                          "options": {
+                            "scheme": [
+                              "/^http$/",
+                              "/^https$/",
+                              "/^mailto$/",
+                              "/^tel$/"
+                            ],
+                            "allowRelative": false,
+                            "relativeOnly": false,
+                            "allowCredentials": false
+                          }
+                        }
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "hidden": "conditional",
+                "name": "url",
+                "type": "url",
+                "title": "External URL"
+              }
+            ],
+            "type": "object",
+            "name": "link"
+          }
+        ],
+        "name": "links",
+        "type": "array"
+      }
+    ],
+    "name": "header-parachutes",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "language",
+        "type": "string"
+      },
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "languageTitle",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "initialValue": false,
+                "description": "Check this box if the link is external",
+                "name": "isExternal",
+                "type": "boolean",
+                "title": "External Link"
+              },
+              {
+                "initialValue": false,
+                "description": "Check this box to open the link in a new tab",
+                "hidden": "conditional",
+                "name": "targetBlank",
+                "type": "boolean",
+                "title": "Open in new tab"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "custom"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "to": [
+                  {
+                    "type": "page-parallel"
+                  }
+                ],
+                "hidden": "conditional",
+                "name": "page",
+                "type": "reference"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "uri",
+                        "constraint": {
+                          "options": {
+                            "scheme": [
+                              "/^http$/",
+                              "/^https$/",
+                              "/^mailto$/",
+                              "/^tel$/"
+                            ],
+                            "allowRelative": false,
+                            "relativeOnly": false,
+                            "allowCredentials": false
+                          }
+                        }
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "hidden": "conditional",
+                "name": "url",
+                "type": "url",
+                "title": "External URL"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "custom"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "title",
+                "type": "string"
+              }
+            ],
+            "type": "object",
+            "name": "link"
+          }
+        ],
+        "name": "links",
+        "type": "array"
+      }
+    ],
+    "name": "header-parallel",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "language",
+        "type": "string"
+      },
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "languageTitle",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "initialValue": false,
+                "description": "Check this box if the link is external",
+                "name": "isExternal",
+                "type": "boolean",
+                "title": "External Link"
+              },
+              {
+                "initialValue": false,
+                "description": "Check this box to open the link in a new tab",
+                "hidden": "conditional",
+                "name": "targetBlank",
+                "type": "boolean",
+                "title": "Open in new tab"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "custom"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "to": [
+                  {
+                    "type": "page-parachutes"
+                  }
+                ],
+                "hidden": "conditional",
+                "name": "page",
+                "type": "reference"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "uri",
+                        "constraint": {
+                          "options": {
+                            "scheme": [
+                              "/^http$/",
+                              "/^https$/",
+                              "/^mailto$/",
+                              "/^tel$/"
+                            ],
+                            "allowRelative": false,
+                            "relativeOnly": false,
+                            "allowCredentials": false
+                          }
+                        }
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "hidden": "conditional",
+                "name": "url",
+                "type": "url",
+                "title": "External URL"
+              }
+            ],
+            "type": "object",
+            "name": "link"
+          }
+        ],
+        "name": "links",
+        "type": "array"
+      }
+    ],
+    "name": "footer-parachutes",
+    "type": "document",
+    "title": "Footer"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "language",
+        "type": "string"
+      },
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "languageTitle",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "initialValue": false,
+                "description": "Check this box if the link is external",
+                "name": "isExternal",
+                "type": "boolean",
+                "title": "External Link"
+              },
+              {
+                "initialValue": false,
+                "description": "Check this box to open the link in a new tab",
+                "hidden": "conditional",
+                "name": "targetBlank",
+                "type": "boolean",
+                "title": "Open in new tab"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "custom"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "to": [
+                  {
+                    "type": "page-parallel"
+                  }
+                ],
+                "hidden": "conditional",
+                "name": "page",
+                "type": "reference"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "uri",
+                        "constraint": {
+                          "options": {
+                            "scheme": [
+                              "/^http$/",
+                              "/^https$/",
+                              "/^mailto$/",
+                              "/^tel$/"
+                            ],
+                            "allowRelative": false,
+                            "relativeOnly": false,
+                            "allowCredentials": false
+                          }
+                        }
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "hidden": "conditional",
+                "name": "url",
+                "type": "url",
+                "title": "External URL"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "custom"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "title",
+                "type": "string"
+              }
+            ],
+            "type": "object",
+            "name": "link"
+          }
+        ],
+        "name": "links",
+        "type": "array"
+      }
+    ],
+    "name": "footer-parallel",
+    "type": "document",
+    "title": "Footer"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "min",
+                "constraint": 2
+              },
+              {
+                "flag": "max",
+                "constraint": 4
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "id",
+        "type": "string"
+      }
+    ],
+    "name": "locale",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "size",
+        "type": "number",
+        "title": "size"
+      }
+    ],
+    "name": "grid-size",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "language",
+        "type": "string"
+      },
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "languageTitle",
+        "type": "string"
+      },
+      {
+        "options": {
+          "layout": "list"
+        },
+        "of": [
+          {
+            "type": "full-width-video"
+          },
+          {
+            "type": "richText"
+          },
+          {
+            "type": "custom-column-image-grid"
+          },
+          {
+            "type": "custom-column-media-grid"
+          },
+          {
+            "type": "two-column-text-image",
+            "title": "Text & Image"
+          },
+          {
+            "initialValue": {
+              "settings": {
+                "sliderSpeed": 1
+              }
+            },
+            "type": "full-screen-infinite-project-slider"
+          },
+          {
+            "initialValue": {
+              "layout": "full-width"
+            },
+            "type": "project-hero"
+          },
+          {
+            "type": "projects-grid"
+          },
+          {
+            "type": "about-section"
+          }
+        ],
+        "name": "pageBuilder",
+        "type": "array"
+      },
+      {
+        "name": "metaTitle",
+        "type": "string"
+      },
+      {
+        "name": "metaDescription",
+        "type": "text"
+      }
+    ],
+    "name": "home-page-parallel",
+    "type": "document",
+    "title": "Home Page"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "language",
+        "type": "string"
+      },
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "languageTitle",
+        "type": "string"
+      },
+      {
+        "options": {
+          "layout": "list"
+        },
+        "of": [
+          {
+            "type": "full-width-video"
+          },
+          {
+            "type": "richText"
+          },
+          {
+            "type": "custom-column-image-grid"
+          },
+          {
+            "type": "custom-column-media-grid"
+          },
+          {
+            "type": "two-column-text-image",
+            "title": "Text & Image"
+          },
+          {
+            "initialValue": {
+              "settings": {
+                "sliderSpeed": 1
+              }
+            },
+            "type": "full-screen-infinite-project-slider"
+          },
+          {
+            "initialValue": {
+              "layout": "full-width"
+            },
+            "type": "project-hero"
+          },
+          {
+            "type": "projects-grid"
+          },
+          {
+            "type": "about-section"
+          }
+        ],
+        "name": "pageBuilder",
+        "type": "array"
+      },
+      {
+        "name": "metaTitle",
+        "type": "string"
+      },
+      {
+        "name": "metaDescription",
+        "type": "text"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      }
+    ],
+    "name": "page-parallel",
+    "type": "document",
+    "title": "Page"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "language",
+        "type": "string"
+      },
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "languageTitle",
+        "type": "string"
+      },
+      {
+        "options": {
+          "colorFormat": "hex"
+        },
+        "name": "color",
+        "type": "simplerColor"
+      },
+      {
+        "options": {
+          "collapsible": true,
+          "collapsed": false,
+          "modal": {
+            "type": "popover"
+          }
+        },
+        "fields": [
+          {
+            "name": "title",
+            "type": "string",
+            "fieldset": "titleDescription"
+          },
+          {
+            "rows": 4,
+            "name": "description",
+            "type": "text",
+            "fieldset": "titleDescription"
+          },
+          {
+            "name": "expertise",
+            "type": "string",
+            "fieldset": "expertiseCustomer"
+          },
+          {
+            "name": "customer",
+            "type": "string",
+            "title": "Client",
+            "fieldset": "expertiseCustomer"
+          }
+        ],
+        "fieldsets": [
+          {
+            "name": "titleDescription",
+            "title": "Titre & Description",
+            "options": {
+              "columns": 1
+            }
+          },
+          {
+            "name": "expertiseCustomer",
+            "title": "Expertise & Client",
+            "options": {
+              "columns": 2
+            }
+          }
+        ],
+        "name": "details",
+        "type": "object"
+      },
+      {
+        "options": {
+          "collapsible": true,
+          "collapsed": false,
+          "columns": 1,
+          "rows": 2,
+          "modal": {
+            "type": "popover"
+          }
+        },
+        "fields": [
+          {
+            "name": "video_short",
+            "type": "mux.video"
+          },
+          {
+            "name": "video_long",
+            "type": "mux.video"
+          },
+          {
+            "name": "video_grid",
+            "type": "mux.video"
+          }
+        ],
+        "name": "Videos",
+        "type": "object"
+      },
+      {
+        "options": {
+          "layout": "list"
+        },
+        "of": [
+          {
+            "type": "full-width-video"
+          },
+          {
+            "type": "richText"
+          },
+          {
+            "type": "custom-column-image-grid"
+          },
+          {
+            "type": "custom-column-media-grid"
+          },
+          {
+            "type": "two-column-text-image",
+            "title": "Text & Image"
+          },
+          {
+            "initialValue": {
+              "settings": {
+                "sliderSpeed": 1
+              }
+            },
+            "type": "full-screen-infinite-project-slider"
+          },
+          {
+            "initialValue": {
+              "layout": "full-width"
+            },
+            "type": "project-hero"
+          },
+          {
+            "type": "projects-grid"
+          },
+          {
+            "type": "about-section"
+          }
+        ],
+        "name": "pageBuilder",
+        "type": "array"
+      },
+      {
+        "name": "metaTitle",
+        "type": "string"
+      },
+      {
+        "name": "metaDescription",
+        "type": "text"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      }
+    ],
+    "name": "project-parallel",
+    "type": "document",
+    "title": "Page"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "language",
+        "type": "string"
+      },
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "languageTitle",
+        "type": "string"
+      },
+      {
+        "name": "metaTitle",
+        "type": "string"
+      },
+      {
+        "name": "metaDescription",
+        "type": "text"
+      },
+      {
+        "options": {
+          "layout": "list"
+        },
+        "of": [
+          {
+            "type": "full-width-video"
+          },
+          {
+            "type": "richText"
+          },
+          {
+            "type": "custom-column-image-grid"
+          },
+          {
+            "type": "custom-column-media-grid"
+          },
+          {
+            "type": "two-column-text-image",
+            "title": "Text & Image"
+          },
+          {
+            "initialValue": {
+              "settings": {
+                "sliderSpeed": 1
+              }
+            },
+            "type": "full-screen-infinite-project-slider"
+          },
+          {
+            "initialValue": {
+              "layout": "full-width"
+            },
+            "type": "project-hero"
+          },
+          {
+            "type": "projects-grid"
+          },
+          {
+            "type": "about-section"
+          }
+        ],
+        "name": "pageBuilder",
+        "type": "array"
+      }
+    ],
+    "name": "home-page-parachutes",
+    "type": "document",
+    "title": "Home Page"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "language",
+        "type": "string"
+      },
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "languageTitle",
+        "type": "string"
+      },
+      {
+        "name": "metaTitle",
+        "type": "string"
+      },
+      {
+        "name": "metaDescription",
+        "type": "text"
+      },
+      {
+        "options": {
+          "layout": "list"
+        },
+        "of": [
+          {
+            "type": "full-width-video"
+          },
+          {
+            "type": "richText"
+          },
+          {
+            "type": "custom-column-image-grid"
+          },
+          {
+            "type": "custom-column-media-grid"
+          },
+          {
+            "type": "two-column-text-image",
+            "title": "Text & Image"
+          },
+          {
+            "initialValue": {
+              "settings": {
+                "sliderSpeed": 1
+              }
+            },
+            "type": "full-screen-infinite-project-slider"
+          },
+          {
+            "initialValue": {
+              "layout": "full-width"
+            },
+            "type": "project-hero"
+          },
+          {
+            "type": "projects-grid"
+          },
+          {
+            "type": "about-section"
+          }
+        ],
+        "name": "pageBuilder",
+        "type": "array"
+      }
+    ],
+    "name": "page-parachutes",
+    "type": "document",
+    "title": "Page"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "language",
+        "type": "string"
+      },
+      {
+        "readOnly": true,
+        "hidden": true,
+        "name": "languageTitle",
+        "type": "string"
+      },
+      {
+        "name": "metaTitle",
+        "type": "string"
+      },
+      {
+        "name": "metaDescription",
+        "type": "text"
+      },
+      {
+        "options": {
+          "layout": "list"
+        },
+        "of": [
+          {
+            "type": "full-width-video"
+          },
+          {
+            "type": "richText"
+          },
+          {
+            "type": "custom-column-image-grid"
+          },
+          {
+            "type": "custom-column-media-grid"
+          },
+          {
+            "type": "two-column-text-image",
+            "title": "Text & Image"
+          },
+          {
+            "initialValue": {
+              "settings": {
+                "sliderSpeed": 1
+              }
+            },
+            "type": "full-screen-infinite-project-slider"
+          },
+          {
+            "initialValue": {
+              "layout": "full-width"
+            },
+            "type": "project-hero"
+          },
+          {
+            "type": "projects-grid"
+          },
+          {
+            "type": "about-section"
+          }
+        ],
+        "name": "pageBuilder",
+        "type": "array"
+      },
+      {
+        "options": {
+          "colorFormat": "hex"
+        },
+        "name": "color",
+        "type": "simplerColor"
+      },
+      {
+        "name": "expertise",
+        "type": "string"
+      },
+      {
+        "name": "customer",
+        "type": "string"
+      }
+    ],
+    "name": "project-parachutes",
+    "type": "document",
+    "title": "Page"
+  },
+  {
+    "fields": [
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Emphasis"
+                },
+                {
+                  "value": "row",
+                  "title": "row"
+                },
+                {
+                  "value": "subtitle",
+                  "title": "subtitle"
+                },
+                {
+                  "value": "text-align-center",
+                  "title": "Text Align Center"
+                },
+                {
+                  "value": "project-color",
+                  "title": "Project Color"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "H1"
+              },
+              {
+                "value": "h2",
+                "title": "H2"
+              },
+              {
+                "value": "h3",
+                "title": "H3"
+              },
+              {
+                "value": "h4",
+                "title": "H4"
+              },
+              {
+                "value": "h5",
+                "title": "H5"
+              },
+              {
+                "value": "link-large",
+                "title": "Link large"
+              },
+              {
+                "value": "link-small",
+                "title": "Link small"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          },
+          {
+            "options": {
+              "language": "html",
+              "languageAlternatives": [
+                {
+                  "title": "HTML",
+                  "value": "html"
+                },
+                {
+                  "title": "CSS",
+                  "value": "css"
+                },
+                {
+                  "title": "JavaScript",
+                  "value": "javascript"
+                }
+              ],
+              "withFilename": false
+            },
+            "type": "code",
+            "title": "Code Block"
+          }
+        ],
+        "name": "content",
+        "type": "array"
+      }
+    ],
+    "name": "richText",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "video",
+        "type": "mux.video"
+      },
+      {
+        "description": "The timestamp to use for the placeholder video",
+        "name": "muxPlaceholderTimestamp",
+        "type": "string"
+      }
+    ],
+    "name": "full-width-video",
+    "type": "object"
+  },
+  {
+    "initialValue": {
+      "layout": "full-width"
+    },
+    "fields": [
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Full width",
+              "value": "full-width"
+            },
+            {
+              "title": "Two column",
+              "value": "two-column"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "full-width",
+                  "two-column"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "The layout of the full-screen-infinite-project-slider",
+        "name": "layout",
+        "type": "string"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Video short",
+              "value": "video_short"
+            },
+            {
+              "title": "Video long",
+              "value": "video_long"
+            },
+            {
+              "title": "Video grid",
+              "value": "video_grid"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "video_short",
+                  "video_long",
+                  "video_grid"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "video",
+        "type": "string"
+      },
+      {
+        "description": "The timestamp to use for the placeholder video",
+        "name": "muxPlaceholderTimestamp",
+        "type": "string"
+      }
+    ],
+    "name": "project-hero",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 0
+              },
+              {
+                "flag": "max",
+                "constraint": 100
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Largeur du conteneur sur desktop (entre 0 et 100). Si non renseigné, les images seront réparties équitablement.",
+        "name": "width",
+        "type": "number",
+        "title": "Width (en %)"
+      },
+      {
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "type": "image"
+          }
+        ],
+        "name": "images",
+        "type": "array"
+      }
+    ],
+    "name": "custom-column-image-grid",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "fields": [
+          {
+            "options": {
+              "list": [
+                {
+                  "title": "Text",
+                  "value": "text"
+                },
+                {
+                  "title": "Image",
+                  "value": "image"
+                }
+              ],
+              "layout": "radio"
+            },
+            "name": "contentType",
+            "type": "string"
+          },
+          {
+            "hidden": "conditional",
+            "name": "text",
+            "type": "richText",
+            "title": "Text Content"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "hidden": "conditional",
+            "name": "image",
+            "type": "image",
+            "title": "Image Content"
+          }
+        ],
+        "name": "leftSlot",
+        "type": "object",
+        "title": "Left"
+      },
+      {
+        "fields": [
+          {
+            "options": {
+              "list": [
+                {
+                  "title": "Text",
+                  "value": "text"
+                },
+                {
+                  "title": "Image",
+                  "value": "image"
+                }
+              ],
+              "layout": "radio"
+            },
+            "name": "contentType",
+            "type": "string"
+          },
+          {
+            "hidden": "conditional",
+            "name": "text",
+            "type": "richText",
+            "title": "Text Content"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "hidden": "conditional",
+            "name": "image",
+            "type": "image",
+            "title": "Image Content"
+          }
+        ],
+        "name": "rightSlot",
+        "type": "object",
+        "title": "Right"
+      }
+    ],
+    "name": "two-column-text-image",
+    "type": "object",
+    "title": "Text & Image"
+  },
+  {
+    "initialValue": {
+      "settings": {
+        "sliderSpeed": 1
+      }
+    },
+    "fields": [
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Emphasis"
+                },
+                {
+                  "value": "row",
+                  "title": "row"
+                },
+                {
+                  "value": "subtitle",
+                  "title": "subtitle"
+                },
+                {
+                  "value": "text-align-center",
+                  "title": "Text Align Center"
+                },
+                {
+                  "value": "project-color",
+                  "title": "Project Color"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "H1"
+              },
+              {
+                "value": "h2",
+                "title": "H2"
+              },
+              {
+                "value": "h3",
+                "title": "H3"
+              },
+              {
+                "value": "h4",
+                "title": "H4"
+              },
+              {
+                "value": "h5",
+                "title": "H5"
+              },
+              {
+                "value": "link-large",
+                "title": "Link large"
+              },
+              {
+                "value": "link-small",
+                "title": "Link small"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          },
+          {
+            "options": {
+              "language": "html",
+              "languageAlternatives": [
+                {
+                  "title": "HTML",
+                  "value": "html"
+                },
+                {
+                  "title": "CSS",
+                  "value": "css"
+                },
+                {
+                  "title": "JavaScript",
+                  "value": "javascript"
+                }
+              ],
+              "withFilename": false
+            },
+            "type": "code",
+            "title": "Code Block"
+          }
+        ],
+        "name": "title",
+        "type": "array"
+      },
+      {
+        "fields": [
+          {
+            "initialValue": 1,
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "min",
+                    "constraint": 0.1
+                  },
+                  {
+                    "flag": "max",
+                    "constraint": 10
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "description": "The speed of the slider",
+            "name": "sliderSpeed",
+            "type": "number"
+          }
+        ],
+        "name": "settings",
+        "type": "object",
+        "title": "Slider Settings"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "to": [
+                  {
+                    "type": "project-parallel"
+                  }
+                ],
+                "name": "project",
+                "type": "reference"
+              },
+              {
+                "initialValue": "video_short",
+                "options": {
+                  "list": [
+                    {
+                      "title": "Video short",
+                      "value": "video_short"
+                    },
+                    {
+                      "title": "Video long",
+                      "value": "video_long"
+                    },
+                    {
+                      "title": "Video grid",
+                      "value": "video_grid"
+                    }
+                  ]
+                },
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "valid",
+                        "constraint": [
+                          "video_short",
+                          "video_long",
+                          "video_grid"
+                        ]
+                      },
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "video",
+                "type": "string",
+                "title": "Project Video"
+              },
+              {
+                "description": "The timestamp to use for the placeholder video",
+                "name": "muxPlaceholderTimestamp",
+                "type": "string"
+              }
+            ],
+            "type": "object",
+            "name": "project"
+          },
+          {
+            "fields": [
+              {
+                "name": "title",
+                "type": "string"
+              },
+              {
+                "name": "tagLabel",
+                "type": "string"
+              },
+              {
+                "name": "tag",
+                "type": "string"
+              },
+              {
+                "name": "video",
+                "type": "mux.video"
+              },
+              {
+                "description": "The timestamp to use for the placeholder video",
+                "name": "muxPlaceholderTimestamp",
+                "type": "string"
+              }
+            ],
+            "type": "object",
+            "name": "item"
+          }
+        ],
+        "name": "projects",
+        "type": "array",
+        "title": "Selected Projects"
+      }
+    ],
+    "name": "full-screen-infinite-project-slider",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "fields": [
+          {
+            "to": [
+              {
+                "type": "project-parallel"
+              }
+            ],
+            "name": "project",
+            "type": "reference",
+            "title": "Project Reference"
+          },
+          {
+            "initialValue": "video_short",
+            "options": {
+              "list": [
+                {
+                  "title": "Video short",
+                  "value": "video_short"
+                },
+                {
+                  "title": "Video long",
+                  "value": "video_long"
+                },
+                {
+                  "title": "Video grid",
+                  "value": "video_grid"
+                }
+              ]
+            },
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "valid",
+                    "constraint": [
+                      "video_short",
+                      "video_long",
+                      "video_grid"
+                    ]
+                  },
+                  {
+                    "flag": "presence",
+                    "constraint": "required"
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "name": "video",
+            "type": "string",
+            "title": "Project Video"
+          },
+          {
+            "description": "The timestamp to use for the placeholder video",
+            "name": "muxPlaceholderTimestamp",
+            "type": "string"
+          },
+          {
+            "options": {
+              "list": [
+                {
+                  "title": "Wide (50%)",
+                  "value": "wide"
+                },
+                {
+                  "title": "Medium (37.5%)",
+                  "value": "medium"
+                },
+                {
+                  "title": "Narrow (25%)",
+                  "value": "narrow"
+                }
+              ],
+              "layout": "radio"
+            },
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "valid",
+                    "constraint": [
+                      "wide",
+                      "medium",
+                      "narrow"
+                    ]
+                  },
+                  {
+                    "flag": "presence",
+                    "constraint": "required"
+                  }
+                ],
+                "level": "error",
+                "message": "Size is required."
+              }
+            ],
+            "name": "size",
+            "type": "string",
+            "title": "Project Size"
+          }
+        ],
+        "name": "projectItem",
+        "type": "object"
+      }
+    ],
+    "name": "project-grid-row-type",
+    "type": "object",
+    "title": "Row"
+  },
+  {
+    "fields": [
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "to": [
+                  {
+                    "type": "project-parallel"
+                  }
+                ],
+                "name": "project",
+                "type": "reference",
+                "title": "Project Reference"
+              },
+              {
+                "initialValue": "video_short",
+                "options": {
+                  "list": [
+                    {
+                      "title": "Video short",
+                      "value": "video_short"
+                    },
+                    {
+                      "title": "Video long",
+                      "value": "video_long"
+                    },
+                    {
+                      "title": "Video grid",
+                      "value": "video_grid"
+                    }
+                  ]
+                },
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "valid",
+                        "constraint": [
+                          "video_short",
+                          "video_long",
+                          "video_grid"
+                        ]
+                      },
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "video",
+                "type": "string",
+                "title": "Project Video"
+              },
+              {
+                "description": "The timestamp to use for the placeholder video",
+                "name": "muxPlaceholderTimestamp",
+                "type": "string"
+              },
+              {
+                "initialValue": false,
+                "description": "Lecture automatique de la vidéo au chargement (défaut: non)",
+                "name": "autoPlay",
+                "type": "boolean",
+                "title": "Lecture automatique"
+              },
+              {
+                "initialValue": true,
+                "description": "Lecture de la vidéo au survol de l'élément (défaut: oui)",
+                "name": "playOnHover",
+                "type": "boolean",
+                "title": "Lecture au survol"
+              },
+              {
+                "initialValue": true,
+                "description": "Optimiser le chargement en ne chargeant la vidéo que lorsque nécessaire (défaut: oui)",
+                "name": "lazyLoad",
+                "type": "boolean",
+                "title": "Chargement paresseux"
+              },
+              {
+                "initialValue": "metadata",
+                "options": {
+                  "list": [
+                    {
+                      "title": "Aucun",
+                      "value": "none"
+                    },
+                    {
+                      "title": "Métadonnées seulement",
+                      "value": "metadata"
+                    },
+                    {
+                      "title": "Automatique",
+                      "value": "auto"
+                    }
+                  ]
+                },
+                "description": "Stratégie de préchargement de la vidéo",
+                "name": "preloadVideo",
+                "type": "string",
+                "title": "Préchargement vidéo"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error",
+                    "message": "Size is required."
+                  }
+                ],
+                "to": [
+                  {
+                    "type": "grid-size"
+                  }
+                ],
+                "name": "size",
+                "type": "reference",
+                "title": "Project Size"
+              }
+            ],
+            "type": "object",
+            "name": "projectItem"
+          }
+        ],
+        "name": "projects",
+        "type": "array"
+      },
+      {
+        "fields": [
+          {
+            "initialValue": true,
+            "description": "Charge les vidéos uniquement lorsqu'elles sont visibles dans le viewport",
+            "name": "enableIntersectionObserver",
+            "type": "boolean",
+            "title": "Utiliser Intersection Observer"
+          },
+          {
+            "initialValue": 0.1,
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "min",
+                    "constraint": 0
+                  },
+                  {
+                    "flag": "max",
+                    "constraint": 1
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "description": "Pourcentage de visibilité requis pour déclencher le chargement (0-1)",
+            "name": "intersectionThreshold",
+            "type": "number",
+            "title": "Seuil d'intersection"
+          },
+          {
+            "initialValue": 2,
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "min",
+                    "constraint": 0
+                  },
+                  {
+                    "flag": "max",
+                    "constraint": 10
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "description": "Nombre de vidéos à précharger en avance",
+            "name": "preloadCount",
+            "type": "number",
+            "title": "Nombre de préchargements"
+          }
+        ],
+        "name": "gridOptimization",
+        "type": "object",
+        "title": "Optimisation de la grille"
+      }
+    ],
+    "name": "projects-grid",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "initialValue": false,
+                "description": "Check this box if the link is external",
+                "name": "isExternal",
+                "type": "boolean",
+                "title": "External Link"
+              },
+              {
+                "initialValue": false,
+                "description": "Check this box to open the link in a new tab",
+                "hidden": "conditional",
+                "name": "targetBlank",
+                "type": "boolean",
+                "title": "Open in new tab"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "custom"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "to": [
+                  {
+                    "type": "page-parallel"
+                  }
+                ],
+                "hidden": "conditional",
+                "name": "page",
+                "type": "reference"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "uri",
+                        "constraint": {
+                          "options": {
+                            "scheme": [
+                              "/^http$/",
+                              "/^https$/",
+                              "/^mailto$/",
+                              "/^tel$/"
+                            ],
+                            "allowRelative": false,
+                            "relativeOnly": false,
+                            "allowCredentials": false
+                          }
+                        }
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "hidden": "conditional",
+                "name": "url",
+                "type": "url",
+                "title": "External URL"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "custom"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "title",
+                "type": "string"
+              }
+            ],
+            "type": "object",
+            "name": "link"
+          }
+        ],
+        "name": "links",
+        "type": "array"
+      },
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Emphasis"
+                },
+                {
+                  "value": "row",
+                  "title": "row"
+                },
+                {
+                  "value": "subtitle",
+                  "title": "subtitle"
+                },
+                {
+                  "value": "text-align-center",
+                  "title": "Text Align Center"
+                },
+                {
+                  "value": "project-color",
+                  "title": "Project Color"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "H1"
+              },
+              {
+                "value": "h2",
+                "title": "H2"
+              },
+              {
+                "value": "h3",
+                "title": "H3"
+              },
+              {
+                "value": "h4",
+                "title": "H4"
+              },
+              {
+                "value": "h5",
+                "title": "H5"
+              },
+              {
+                "value": "link-large",
+                "title": "Link large"
+              },
+              {
+                "value": "link-small",
+                "title": "Link small"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          },
+          {
+            "options": {
+              "language": "html",
+              "languageAlternatives": [
+                {
+                  "title": "HTML",
+                  "value": "html"
+                },
+                {
+                  "title": "CSS",
+                  "value": "css"
+                },
+                {
+                  "title": "JavaScript",
+                  "value": "javascript"
+                }
+              ],
+              "withFilename": false
+            },
+            "type": "code",
+            "title": "Code Block"
+          }
+        ],
+        "name": "content",
+        "type": "array"
+      },
+      {
+        "fields": [
+          {
+            "initialValue": false,
+            "description": "Check this box if the link is external",
+            "name": "isExternal",
+            "type": "boolean",
+            "title": "External Link"
+          },
+          {
+            "initialValue": false,
+            "description": "Check this box to open the link in a new tab",
+            "hidden": "conditional",
+            "name": "targetBlank",
+            "type": "boolean",
+            "title": "Open in new tab"
+          },
+          {
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "custom"
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "to": [
+              {
+                "type": "page-parallel"
+              }
+            ],
+            "hidden": "conditional",
+            "name": "page",
+            "type": "reference"
+          },
+          {
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "uri",
+                    "constraint": {
+                      "options": {
+                        "scheme": [
+                          "/^http$/",
+                          "/^https$/",
+                          "/^mailto$/",
+                          "/^tel$/"
+                        ],
+                        "allowRelative": false,
+                        "relativeOnly": false,
+                        "allowCredentials": false
+                      }
+                    }
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "hidden": "conditional",
+            "name": "url",
+            "type": "url",
+            "title": "External URL"
+          },
+          {
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "custom"
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "name": "title",
+            "type": "string"
+          }
+        ],
+        "name": "linkContent",
+        "type": "object"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "name": "title",
+                "type": "string"
+              },
+              {
+                "fields": [
+                  {
+                    "initialValue": false,
+                    "description": "Check this box if the link is external",
+                    "name": "isExternal",
+                    "type": "boolean",
+                    "title": "External Link"
+                  },
+                  {
+                    "initialValue": false,
+                    "description": "Check this box to open the link in a new tab",
+                    "hidden": "conditional",
+                    "name": "targetBlank",
+                    "type": "boolean",
+                    "title": "Open in new tab"
+                  },
+                  {
+                    "validation": [
+                      {
+                        "rules": [
+                          {
+                            "flag": "custom"
+                          }
+                        ],
+                        "level": "error"
+                      }
+                    ],
+                    "to": [
+                      {
+                        "type": "page-parallel"
+                      }
+                    ],
+                    "hidden": "conditional",
+                    "name": "page",
+                    "type": "reference"
+                  },
+                  {
+                    "validation": [
+                      {
+                        "rules": [
+                          {
+                            "flag": "uri",
+                            "constraint": {
+                              "options": {
+                                "scheme": [
+                                  "/^http$/",
+                                  "/^https$/",
+                                  "/^mailto$/",
+                                  "/^tel$/"
+                                ],
+                                "allowRelative": false,
+                                "relativeOnly": false,
+                                "allowCredentials": false
+                              }
+                            }
+                          }
+                        ],
+                        "level": "error"
+                      }
+                    ],
+                    "hidden": "conditional",
+                    "name": "url",
+                    "type": "url",
+                    "title": "External URL"
+                  },
+                  {
+                    "validation": [
+                      {
+                        "rules": [
+                          {
+                            "flag": "custom"
+                          }
+                        ],
+                        "level": "error"
+                      }
+                    ],
+                    "name": "title",
+                    "type": "string"
+                  }
+                ],
+                "name": "link",
+                "type": "object"
+              }
+            ],
+            "type": "object",
+            "name": "job"
+          }
+        ],
+        "name": "jobs",
+        "type": "array"
+      },
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Emphasis"
+                },
+                {
+                  "value": "row",
+                  "title": "row"
+                },
+                {
+                  "value": "subtitle",
+                  "title": "subtitle"
+                },
+                {
+                  "value": "text-align-center",
+                  "title": "Text Align Center"
+                },
+                {
+                  "value": "project-color",
+                  "title": "Project Color"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "H1"
+              },
+              {
+                "value": "h2",
+                "title": "H2"
+              },
+              {
+                "value": "h3",
+                "title": "H3"
+              },
+              {
+                "value": "h4",
+                "title": "H4"
+              },
+              {
+                "value": "h5",
+                "title": "H5"
+              },
+              {
+                "value": "link-large",
+                "title": "Link large"
+              },
+              {
+                "value": "link-small",
+                "title": "Link small"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          },
+          {
+            "options": {
+              "language": "html",
+              "languageAlternatives": [
+                {
+                  "title": "HTML",
+                  "value": "html"
+                },
+                {
+                  "title": "CSS",
+                  "value": "css"
+                },
+                {
+                  "title": "JavaScript",
+                  "value": "javascript"
+                }
+              ],
+              "withFilename": false
+            },
+            "type": "code",
+            "title": "Code Block"
+          }
+        ],
+        "name": "bottomContentLeft",
+        "type": "array",
+        "title": "Bottom Content left"
+      },
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Emphasis"
+                },
+                {
+                  "value": "row",
+                  "title": "row"
+                },
+                {
+                  "value": "subtitle",
+                  "title": "subtitle"
+                },
+                {
+                  "value": "text-align-center",
+                  "title": "Text Align Center"
+                },
+                {
+                  "value": "project-color",
+                  "title": "Project Color"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "H1"
+              },
+              {
+                "value": "h2",
+                "title": "H2"
+              },
+              {
+                "value": "h3",
+                "title": "H3"
+              },
+              {
+                "value": "h4",
+                "title": "H4"
+              },
+              {
+                "value": "h5",
+                "title": "H5"
+              },
+              {
+                "value": "link-large",
+                "title": "Link large"
+              },
+              {
+                "value": "link-small",
+                "title": "Link small"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          },
+          {
+            "options": {
+              "language": "html",
+              "languageAlternatives": [
+                {
+                  "title": "HTML",
+                  "value": "html"
+                },
+                {
+                  "title": "CSS",
+                  "value": "css"
+                },
+                {
+                  "title": "JavaScript",
+                  "value": "javascript"
+                }
+              ],
+              "withFilename": false
+            },
+            "type": "code",
+            "title": "Code Block"
+          }
+        ],
+        "name": "bottomContentRight",
+        "type": "array",
+        "title": "Bottom Content right"
+      }
+    ],
+    "name": "about-section",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 0
+              },
+              {
+                "flag": "max",
+                "constraint": 100
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Largeur du conteneur sur desktop (entre 0 et 100). Si non renseigné, les images seront réparties équitablement.",
+        "name": "width",
+        "type": "number",
+        "title": "Width (en %)"
+      },
+      {
+        "description": "Ajoutez des images ou des vidéos",
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "type": "image"
+          },
+          {
+            "fields": [
+              {
+                "name": "video",
+                "type": "mux.video",
+                "title": "Vidéo"
+              },
+              {
+                "initialValue": false,
+                "description": "Activer la lecture automatique de la vidéo",
+                "name": "autoplay",
+                "type": "boolean",
+                "title": "Lecture automatique"
+              }
+            ],
+            "type": "object",
+            "title": "Vidéo"
+          }
+        ],
+        "name": "media",
+        "type": "array",
+        "title": "Médias"
+      }
+    ],
+    "name": "custom-column-media-grid",
+    "type": "object"
+  }
+]
