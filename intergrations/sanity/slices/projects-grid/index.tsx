@@ -54,12 +54,12 @@ export interface ProjectsGridProps extends Pick<IProjectsGrid, '_type'> {
 }
 
 export const ProjectsGrid: FC<ProjectsGridProps> = ({ projects }) => {
-  // Créer une MAP stable pour suivre ce qui a déjà été chargé
-  const loadedProjectsMap = useRef(new Map()).current
+  // Créez une MAP stable pour suivre ce qui a déjà été chargé - SUPPRIMÉ
+  // const loadedProjectsMap = useRef(new Map()).current
   const [visibleProjects, setVisibleProjects] = useState<
     ((typeof projects)[0] & { absoluteIndex: number })[]
   >([])
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [targetCount, setTargetCount] = useState(0) // Nouvel état pour suivre le nombre cible
   const ITEMS_PER_BATCH = 8
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -78,21 +78,15 @@ export const ProjectsGrid: FC<ProjectsGridProps> = ({ projects }) => {
 
   // Chargement initial
   useEffect(() => {
-    const initialBatch = projectsWithIndices.slice(0, ITEMS_PER_BATCH)
+    const initialCount = Math.min(ITEMS_PER_BATCH, projectsWithIndices.length)
+    setTargetCount(initialCount)
+  }, [projectsWithIndices])
 
-    // Ajouter chaque projet à notre map de suivi
-    initialBatch.forEach((project) => {
-      const playbackId =
-        project.project?.Videos?.[project.video]?.asset?.playbackId
-      if (playbackId) {
-        const key = `${playbackId}-${project.absoluteIndex}`
-        loadedProjectsMap.set(key, true)
-      }
-    })
+  // Mise à jour de visibleProjects basée sur targetCount
+  useEffect(() => {
+    setVisibleProjects(projectsWithIndices.slice(0, targetCount))
+  }, [targetCount, projectsWithIndices])
 
-    setVisibleProjects(initialBatch)
-    setCurrentIndex(ITEMS_PER_BATCH)
-  }, [projectsWithIndices, loadedProjectsMap])
 
   // Observer pour le chargement à la demande
   useEffect(() => {
@@ -105,35 +99,14 @@ export const ProjectsGrid: FC<ProjectsGridProps> = ({ projects }) => {
         const target = entries[0]
         if (
           target.isIntersecting &&
-          currentIndex < projectsWithIndices.length
+          targetCount < projectsWithIndices.length // Utilise targetCount ici
         ) {
-          // Déterminer le prochain lot à charger
-          const nextBatch = projectsWithIndices.slice(
-            currentIndex,
-            currentIndex + ITEMS_PER_BATCH
+          // Déterminer le prochain nombre cible d'éléments à afficher
+          const nextTargetCount = Math.min(
+            targetCount + ITEMS_PER_BATCH,
+            projectsWithIndices.length
           )
-
-          // Filtrer les projets déjà chargés pour éviter les doublons
-          const newBatch = nextBatch.filter((project) => {
-            const playbackId =
-              project.project?.Videos?.[project.video]?.asset?.playbackId
-            if (!playbackId) return false
-
-            const key = `${playbackId}-${project.absoluteIndex}`
-            if (loadedProjectsMap.has(key)) {
-              return false // Déjà chargé, ne pas ajouter à nouveau
-            }
-
-            // Marquer comme chargé
-            loadedProjectsMap.set(key, true)
-            return true
-          })
-
-          if (newBatch.length > 0) {
-            setVisibleProjects((prev) => [...prev, ...newBatch])
-          }
-
-          setCurrentIndex((prev) => prev + ITEMS_PER_BATCH)
+          setTargetCount(nextTargetCount) // Met à jour le nombre cible
         }
       },
       {
@@ -152,7 +125,7 @@ export const ProjectsGrid: FC<ProjectsGridProps> = ({ projects }) => {
         observerRef.current.disconnect()
       }
     }
-  }, [currentIndex, projectsWithIndices, loadedProjectsMap])
+  }, [targetCount, projectsWithIndices]) // Dépend de targetCount
 
   const handleVideoLoaded = () => {
     // Fonction de callback pour le chargement vidéo
@@ -204,7 +177,7 @@ export const ProjectsGrid: FC<ProjectsGridProps> = ({ projects }) => {
           )
         })}
       </div>
-      {currentIndex < projectsWithIndices.length && (
+      {targetCount < projectsWithIndices.length && ( // Utilise targetCount ici
         <div ref={loaderRef} style={{ height: '20px', margin: '20px 0' }} />
       )}
     </section>

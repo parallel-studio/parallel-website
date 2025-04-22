@@ -84,7 +84,7 @@ export const TwoColumnTextImage: FC<TwoColumnTextImageProps> = ({
           )}
           {leftSlot.contentType === 'image' && leftSlot.image?.asset?.url && (
             <img
-              className="dr-w-full dr-h-full object-cover"
+              className="object-cover w-full h-full"
               src={leftSlot.image.asset.url}
               alt={leftSlot.image.asset.altText || ''}
             />
@@ -103,7 +103,7 @@ export const TwoColumnTextImage: FC<TwoColumnTextImageProps> = ({
           )}
           {rightSlot.contentType === 'image' && rightSlot.image?.asset?.url && (
             <img
-              className="dr-w-full dr-h-full object-cover"
+              className=" object-cover"
               src={rightSlot.image.asset.url}
               alt={rightSlot.image.asset.altText || ''}
             />
