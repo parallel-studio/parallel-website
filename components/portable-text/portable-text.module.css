@@ -43,3 +43,11 @@
 .rich_text_h3 {
   font-size: min(max(1rem, 1.3014vw), 1.625rem);
 }
+
+.strong {
+  font-weight: bold;
+}
+
+.em {
+  font-style: italic;
+}
