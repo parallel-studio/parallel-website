@@ -52,6 +52,12 @@ const components = {
     'link-small': ({ children }: { children: string }) => (
       <LinkComponent className={s.link_small}>{children}</LinkComponent>
     ),
+    strong: ({ children }: { children: string }) => (
+      <strong className={s.strong}>{children}</strong>
+    ),
+    em: ({ children }: { children: string }) => (
+      <em className={s.em}>{children}</em>
+    ),
   },
   types: {
     code: ({ value }: { value: { code: string; language: string } }) => {
