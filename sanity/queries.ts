@@ -34,7 +34,8 @@ const FIELDS_MEDIA = `
       aspect_ratio
     }
   },
-  autoplay
+  autoplay,
+  muxPlaceholderTimestamp
 `
 
 export const FIELDS_GRID_SIZE = `
