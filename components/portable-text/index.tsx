@@ -53,10 +53,14 @@ const components = {
       <LinkComponent className={s.link_small}>{children}</LinkComponent>
     ),
     strong: ({ children }: { children: string }) => (
-      <strong className={s.strong}>{children}</strong>
+      <strong style={{ fontWeight: 'bold' }} className={s.strong}>
+        {children}
+      </strong>
     ),
     em: ({ children }: { children: string }) => (
-      <em className={s.em}>{children}</em>
+      <em style={{ fontStyle: 'italic' }} className={s.em}>
+        {children}
+      </em>
     ),
   },
   types: {
