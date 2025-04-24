@@ -27,6 +27,7 @@ export interface IMedia {
     }
   }
   autoplay?: boolean
+  muxPlaceholderTimestamp?: string
 }
 
 export interface CustomColumnMediaGridProps
@@ -40,7 +41,13 @@ export const CustomColumnMediaGrid: FC<CustomColumnMediaGridProps> = ({
   width,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
-  console.log('media', media)
+
+  const getMuxPlaceholderTimestamp = (media: IMedia) => {
+    return  media.muxPlaceholderTimestamp
+    ? Number.parseFloat(media.muxPlaceholderTimestamp)
+    : 0
+  }
+
   return (
     <section
       className={cn(
@@ -79,6 +86,8 @@ export const CustomColumnMediaGrid: FC<CustomColumnMediaGridProps> = ({
               preferPlayback="mse"
               maxResolution="1080p"
               minResolution="1080p"
+              startTime={getMuxPlaceholderTimestamp(media)}
+              poster={`https://image.mux.com/${media.video?.asset?.playbackId}/thumbnail.png?time=${getMuxPlaceholderTimestamp(media)}`}
               autoPlay={media.autoplay || false}
               controls={!media.autoplay}
               metadata={{
