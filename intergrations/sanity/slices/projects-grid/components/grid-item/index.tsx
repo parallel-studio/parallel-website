@@ -5,6 +5,8 @@ import dynamic from 'next/dynamic'
 import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { TransitionLink } from '~/components/link'
 import s from './grid-item.module.css'
+import { useRouter } from 'next/navigation';
+
 
 const MuxPlayer = dynamic(() => import('@mux/mux-video-react'), { ssr: false })
 
@@ -202,7 +204,11 @@ export const GridItem = memo(
     }, [resetVideoPosition, onVideoLoaded]) 
     
 
-
+    const handleClick = () => {
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('scrollY:/', String(window.scrollY))
+      }
+    }
 
     if (!isVisible && !hasStartedLoading) {
       return (
@@ -216,7 +222,7 @@ export const GridItem = memo(
 
     return (
       <div ref={itemRef} className={cn(s.grid_item, className)} style={style}>
-        <TransitionLink slug={`work/${slug}`}>
+        <TransitionLink slug={`work/${slug}`} onClick={handleClick}>
           <div
             className={s.grid_item__video}
             onMouseEnter={handleMouseEnter}
