@@ -229,13 +229,13 @@ export const GridItem = memo(
               playsInline
               preload={lazyLoad ? 'metadata' : 'auto'}
               preferPlayback="mse"
-              minResolution="1080p"
-              maxResolution="1080p"
+              minResolution="720p"
+              maxResolution="720p"
               {...(isSafariDesktop
                 ? { onLoadedData: handleLoadedData }
                 : { onLoadedMetadata: handleLoadedData })}
               startTime={muxPlaceholderTimestampParsed}
-              poster={`https://image.mux.com/${video}/thumbnail.webp?height=500&time=${muxPlaceholderTimestampParsed}`}
+              poster={`https://image.mux.com/${video}/thumbnail.webp?height=720&time=${muxPlaceholderTimestampParsed}`}
               style={{
                 height: '100%',
                 backgroundSize: 'cover',
