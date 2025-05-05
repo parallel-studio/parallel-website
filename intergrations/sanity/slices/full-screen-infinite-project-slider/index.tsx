@@ -10,6 +10,7 @@ import {
   type WheelEvent,
   useRef,
 } from 'react'
+import { useDeviceDetection } from '~/hooks/use-device-detection'
 import { SliderItem } from './components/slider-item'
 import { Title } from './components/slider-title'
 import s from './full-screen-infinite-project-slider.module.css'
@@ -72,6 +73,7 @@ export const FullScreenInfiniteProjectSlider: FC<
   settings = { sliderSpeed: 20 },
   title = '',
 }: FullScreenInfiniteProjectSliderProps) => {
+  const { isMobile } = useDeviceDetection()
   const containerRef = useRef<HTMLDivElement>(null)
   const sectionRef = useRef<HTMLDivElement>(null)
   const cardsRef = useRef<HTMLDivElement[]>([])
@@ -170,13 +172,6 @@ export const FullScreenInfiniteProjectSlider: FC<
           16 / 9
         )
 
-        const isMobile =
-          typeof window !== 'undefined' &&
-          (window.innerWidth <= 768 ||
-            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-              navigator.userAgent
-            ))
-
         if (isMobile) {
           setTimeout(() => {
             const allLoaded = videosLoadedRef.current.every((item) => item)
@@ -190,7 +185,7 @@ export const FullScreenInfiniteProjectSlider: FC<
         }
       }
     },
-    { dependencies: [projectsToRender.length] }
+    { dependencies: [projectsToRender.length, isMobile] }
   )
 
   const checkMouseOverElement = (index: number) => {
@@ -218,14 +213,6 @@ export const FullScreenInfiniteProjectSlider: FC<
 
   useGsap(
     (timeline) => {
-      // Déterminer si on est sur mobile
-      const isMobile =
-        typeof window !== 'undefined' &&
-        (window.innerWidth <= 768 ||
-          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-            navigator.userAgent
-          ))
-
       if (hoveredIndex !== null) {
         // Sur mobile, nous ne mettons pas en pause la boucle
         if (
@@ -249,7 +236,7 @@ export const FullScreenInfiniteProjectSlider: FC<
       }
     },
     {
-      deps: [hoveredIndex, isScrollingRef.current],
+      deps: [hoveredIndex, isScrollingRef.current, isMobile],
     }
   )
 
@@ -305,7 +292,7 @@ export const FullScreenInfiniteProjectSlider: FC<
     const isSafariDesktop =
       typeof window !== 'undefined' &&
       /^((?!chrome|android).)*safari/i.test(navigator.userAgent) &&
-      window.innerWidth > 768
+      !isMobile
 
     // Gestion spéciale pour Safari desktop
     if (isSafariDesktop) {
@@ -387,8 +374,6 @@ export const FullScreenInfiniteProjectSlider: FC<
           }, 200)
         }, 100)
       } else {
-        const isMobile =
-          typeof window !== 'undefined' && window.innerWidth <= 768
         const loadedCount = videosLoadedRef.current.filter(Boolean).length
         const threshold = Math.ceil(videosLoadedRef.current.length / 2)
 
@@ -414,17 +399,24 @@ export const FullScreenInfiniteProjectSlider: FC<
 
   const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
     if (e.touches.length > 0) {
-      touchStartRef.current = e.touches[0].clientY
-      touchPrevRef.current = e.touches[0].clientY
+      touchStartRef.current = isMobile ? e.touches[0].clientX : e.touches[0].clientY
+      touchPrevRef.current = isMobile ? e.touches[0].clientX : e.touches[0].clientY
     }
   }
 
   const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
     if (touchPrevRef.current !== null && e.touches.length > 0) {
-      const currentY = e.touches[0].clientY
-      const delta = touchPrevRef.current - currentY
-      handleDelta(delta * 3)
-      touchPrevRef.current = currentY
+      if (isMobile) {
+        const currentX = e.touches[0].clientX
+        const delta = touchPrevRef.current - currentX
+        handleDelta(delta * 3)
+        touchPrevRef.current = currentX
+      } else {
+        const currentY = e.touches[0].clientY
+        const delta = touchPrevRef.current - currentY
+        handleDelta(delta * 3)
+        touchPrevRef.current = currentY
+      }
     }
   }
 
