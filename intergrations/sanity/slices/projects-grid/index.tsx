@@ -76,6 +76,18 @@ export const ProjectsGrid: FC<ProjectsGridProps> = ({ projects }) => {
     [projects]
   )
 
+  // AJOUT YANN
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const scrollY = sessionStorage.getItem('scrollY')
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY, 10))
+        sessionStorage.removeItem('scrollY')
+      }
+    }
+  }, [])
+
+
   // Chargement initial
   useEffect(() => {
     const initialCount = Math.min(ITEMS_PER_BATCH, projectsWithIndices.length)
