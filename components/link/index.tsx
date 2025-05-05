@@ -2,6 +2,7 @@
 import cn from 'clsx'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
+import { ReactNode, MouseEvent } from 'react'
 
 interface Props {
   children: React.ReactNode
@@ -11,6 +12,22 @@ interface Props {
   targetBlank?: boolean | null
   slug?: string | null
 }
+
+
+  // AJOUT YANN
+interface TransitionLinkProps {
+  slug: string
+  children: ReactNode
+}
+export const TransitionLink = ({ slug, children }: TransitionLinkProps) => {
+  const router = useRouter()
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    // Sauvegarder la position de scroll actuelle
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('scrollY', window.scrollY.toString())
+    }
+  }
+// FIN AJOUT YANN
 
 export const TransitionLink = ({
   children,
@@ -22,6 +39,7 @@ export const TransitionLink = ({
 }: Props) => {
   const router = useRouter()
   const pathname = usePathname()
+
 
   if (isExternal && url) {
     return (
@@ -38,7 +56,7 @@ export const TransitionLink = ({
 
   if (slug) {
     return (
-      <Link className={cn(className)} href={`/${slug}`} scroll={false}> 
+      <Link className={cn(className)} href={`/${slug}`} scroll={false} onClick={handleClick}> 
         {children}
       </Link>
     )

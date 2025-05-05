@@ -5,7 +5,6 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   experimental: {
-    scrollRestoration: true, // 👈 AJOUT ICI
     turbo: {
       rules: {
         '*.svg': {
@@ -60,6 +59,7 @@ const nextConfig: NextConfig = {
       },
     },
     reactCompiler: true,
+    scrollRestoration: true, // 👈 AJOUT ICI
     nextScriptWorkers: true,
     optimizePackageImports: ['@react-three/drei', '@react-three/fiber', 'gsap'],
   },

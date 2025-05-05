@@ -6,7 +6,9 @@ import type {
   ProjectParallel,
 } from '~/sanity/types'
 import { GridItem } from './components/grid-item/index'
+import { useScrollRestoration } from './hooks/useScrollRestoration'
 import s from './projects-grid.module.css'
+
 export interface IProjectParallel {
   color: {
     value: string
@@ -76,11 +78,45 @@ export const ProjectsGrid: FC<ProjectsGridProps> = ({ projects }) => {
     [projects]
   )
 
+
+  // AJOUT YANN
+  useEffect(() => {
+    const savedScrollY = typeof window !== 'undefined'
+      ? sessionStorage.getItem('scrollY:/')
+      : null
+  
+    if (savedScrollY) {
+      const scrollY = parseInt(savedScrollY, 10)
+      // Estime combien d’items il faut charger pour que scrollY soit atteignable
+      const estimatedItemsToLoad = Math.ceil(scrollY / 600) + 4
+      const count = Math.min(estimatedItemsToLoad, projectsWithIndices.length)
+  
+      setTargetCount(count)
+    } else {
+      setTargetCount(Math.min(ITEMS_PER_BATCH, projectsWithIndices.length))
+    }
+  }, [projectsWithIndices])
+  useEffect(() => {
+    const savedScrollY = typeof window !== 'undefined'
+      ? sessionStorage.getItem('scrollY:/')
+      : null
+  
+    if (savedScrollY && visibleProjects.length >= targetCount) {
+      setTimeout(() => {
+        window.scrollTo(0, parseInt(savedScrollY, 10))
+        sessionStorage.removeItem('scrollY:/')
+      }, 50)
+    }
+  }, [visibleProjects, targetCount])
+
+
+/*
   // Chargement initial
   useEffect(() => {
     const initialCount = Math.min(ITEMS_PER_BATCH, projectsWithIndices.length)
     setTargetCount(initialCount)
   }, [projectsWithIndices])
+*/
 
   // Mise à jour de visibleProjects basée sur targetCount
   useEffect(() => {
