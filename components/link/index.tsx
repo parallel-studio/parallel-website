@@ -17,7 +17,7 @@ export const TransitionLink = ({
   className,
   isExternal,
   url,
-  targetBlank,
+  targetBlank, 
   slug,
 }: Props) => {
   const router = useRouter()
@@ -38,7 +38,7 @@ export const TransitionLink = ({
 
   if (slug) {
     return (
-      <Link className={cn(className)} href={`/${slug}`}>
+      <Link className={cn(className)} href={`/${slug}`} scroll={false}> 
         {children}
       </Link>
     )

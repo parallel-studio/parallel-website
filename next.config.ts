@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   experimental: {
+    scrollRestoration: true, // 👈 AJOUT ICI
     turbo: {
       rules: {
         '*.svg': {
