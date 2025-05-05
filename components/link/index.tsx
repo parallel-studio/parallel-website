@@ -38,7 +38,7 @@ export const TransitionLink = ({
 
   if (slug) {
     return (
-      <Link className={cn(className)} href={`/${slug}`} scroll={false}> 
+      <Link className={cn(className)} href={`/${slug}`} scroll={false} onClick={handleClick}> 
         {children}
       </Link>
     )

@@ -201,6 +201,13 @@ export const GridItem = memo(
       onVideoLoaded?.()
     }, [resetVideoPosition, onVideoLoaded])
 
+    // AJOUT YANN 
+    const pathname = window.location.pathname
+    sessionStorage.setItem(`scrollY:${pathname}`, String(window.scrollY))
+    
+
+
+
     if (!isVisible && !hasStartedLoading) {
       return (
         <div

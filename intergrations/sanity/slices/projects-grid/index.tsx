@@ -6,7 +6,9 @@ import type {
   ProjectParallel,
 } from '~/sanity/types'
 import { GridItem } from './components/grid-item/index'
+import { useScrollRestoration } from './hooks/useScrollRestoration'
 import s from './projects-grid.module.css'
+
 export interface IProjectParallel {
   color: {
     value: string
