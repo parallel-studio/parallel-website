@@ -23,6 +23,13 @@ export const TransitionLink = ({
   const router = useRouter()
   const pathname = usePathname()
 
+  // AJOUT YANN
+  const handleClick = () => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem(`scrollY:${window.location.pathname}`, String(window.scrollY))
+    }
+  }
+
   if (isExternal && url) {
     return (
       <a

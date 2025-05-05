@@ -199,15 +199,7 @@ export const GridItem = memo(
       gsap.to(itemRef.current, { opacity: 1, duration: 0.5, ease: 'power1.in' })
 
       onVideoLoaded?.()
-    }, [resetVideoPosition, onVideoLoaded])
-
-    // AJOUT YANN 
-    const handleClick = () => {
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem(`scrollY:${window.location.pathname}`, String(window.scrollY))
-      }
-    }
-    
+    }, [resetVideoPosition, onVideoLoaded]) 
     
 
 
