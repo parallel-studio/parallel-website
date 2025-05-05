@@ -94,6 +94,16 @@ export const ProjectsGrid: FC<ProjectsGridProps> = ({ projects }) => {
       observerRef.current.disconnect()
     }
 
+  // AJOUT YANN pour scrollRestauration
+  useEffect(() => {
+  const scrollY = sessionStorage.getItem('scrollY')
+  if (scrollY) {
+    window.scrollTo(0, parseInt(scrollY, 10))
+    sessionStorage.removeItem('scrollY')
+  }
+}, [])
+
+
     observerRef.current = new IntersectionObserver(
       (entries) => {
         const target = entries[0]

@@ -201,6 +201,15 @@ export const GridItem = memo(
       onVideoLoaded?.()
     }, [resetVideoPosition, onVideoLoaded])
 
+    // AJOUT YANN !!
+    const saveScrollPosition = () => {
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('scrollY', String(window.scrollY))
+      }
+    }
+    
+
+
     if (!isVisible && !hasStartedLoading) {
       return (
         <div
@@ -216,6 +225,7 @@ export const GridItem = memo(
         <TransitionLink slug={`work/${slug}`}>
           <div
             className={s.grid_item__video}
+            onClick={saveScrollPosition} // 👈 AJOUT YANN !!
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -229,13 +239,13 @@ export const GridItem = memo(
               playsInline
               preload={lazyLoad ? 'metadata' : 'auto'}
               preferPlayback="mse"
-              minResolution="1080p"
-              maxResolution="1080p"
+              minResolution="720p"
+              maxResolution="720p"
               {...(isSafariDesktop
                 ? { onLoadedData: handleLoadedData }
                 : { onLoadedMetadata: handleLoadedData })}
               startTime={muxPlaceholderTimestampParsed}
-              poster={`https://image.mux.com/${video}/thumbnail.webp?height=500&time=${muxPlaceholderTimestampParsed}`}
+              poster={`https://image.mux.com/${video}/thumbnail.webp?height=720&time=${muxPlaceholderTimestampParsed}`}
               style={{
                 height: '100%',
                 backgroundSize: 'cover',
