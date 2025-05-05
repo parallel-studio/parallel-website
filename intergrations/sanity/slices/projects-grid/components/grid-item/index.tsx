@@ -62,6 +62,8 @@ export const GridItem = memo(
       }
     }, [])
 
+
+
     useEffect(() => {
       if (loadedVideosCache.has(videoId)) {
         videoLoadAttempted.current = true
@@ -203,12 +205,11 @@ export const GridItem = memo(
       onVideoLoaded?.()
     }, [resetVideoPosition, onVideoLoaded]) 
     
-
+    // AJOUT YANN
     const handleClick = () => {
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem('scrollY:/', String(window.scrollY))
-      }
-    }
+      sessionStorage.setItem('scrollY', window.scrollY.toString());
+    };
+    
 
     if (!isVisible && !hasStartedLoading) {
       return (

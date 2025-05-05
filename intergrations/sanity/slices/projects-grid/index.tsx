@@ -78,23 +78,31 @@ export const ProjectsGrid: FC<ProjectsGridProps> = ({ projects }) => {
     [projects]
   )
 
+
   // AJOUT YANN
   useEffect(() => {
-    const savedY = sessionStorage.getItem('scrollY:/')
-    if (savedY) {
-      setTimeout(() => {
-        window.scrollTo(0, parseInt(savedY, 10))
-        sessionStorage.removeItem('scrollY:/')
-      }, 50)
+    const savedScrollY = sessionStorage.getItem('scrollY');
+    if (savedScrollY) {
+      window.scrollTo(0, parseInt(savedScrollY, 10));
+      sessionStorage.removeItem('scrollY');
     }
-  }, [])
+  }, [visibleProjects]);
+  // Chargement initial
+  useEffect(() => {
+    const initialCount = savedScrollY
+      ? projectsWithIndices.length
+      : Math.min(ITEMS_PER_BATCH, projectsWithIndices.length);
+    setTargetCount(initialCount);
+  }, [projectsWithIndices]);
 
 
+/*
   // Chargement initial
   useEffect(() => {
     const initialCount = Math.min(ITEMS_PER_BATCH, projectsWithIndices.length)
     setTargetCount(initialCount)
   }, [projectsWithIndices])
+*/
 
   // Mise à jour de visibleProjects basée sur targetCount
   useEffect(() => {
