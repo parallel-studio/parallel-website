@@ -201,13 +201,6 @@ export const GridItem = memo(
       onVideoLoaded?.()
     }, [resetVideoPosition, onVideoLoaded])
 
-      // 👇 AJOUT YANN
-      const saveScrollPosition = () => {
-        if (typeof window !== 'undefined') {
-          sessionStorage.setItem('scrollY', String(window.scrollY))
-        }
-      }
-
     if (!isVisible && !hasStartedLoading) {
       return (
         <div
@@ -223,7 +216,6 @@ export const GridItem = memo(
         <TransitionLink slug={`work/${slug}`}>
           <div
             className={s.grid_item__video}
-            onClick={saveScrollPosition} // 👈 AJOUT YANN
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
