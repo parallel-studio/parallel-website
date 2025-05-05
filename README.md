@@ -13,6 +13,7 @@
 ```
 
 ## Core Technologies
+## modif Yann juste pour push
 
 - **Framework & Runtime**
   - [Next.js 15.2](https://nextjs.org) App Router with React Server Components
