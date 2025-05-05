@@ -235,7 +235,7 @@ export const GridItem = memo(
                 ? { onLoadedData: handleLoadedData }
                 : { onLoadedMetadata: handleLoadedData })}
               startTime={muxPlaceholderTimestampParsed}
-              poster={`https://image.mux.com/${video}/thumbnail.png?time=${muxPlaceholderTimestampParsed}`}
+              poster={`https://image.mux.com/${video}/thumbnail.webp?height=500&time=${muxPlaceholderTimestampParsed}`}
               style={{
                 height: '100%',
                 backgroundSize: 'cover',
