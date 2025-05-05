@@ -89,6 +89,7 @@ export const ProjectsGrid: FC<ProjectsGridProps> = ({ projects }) => {
   }, [visibleProjects]);
   // Chargement initial
   useEffect(() => {
+    const savedScrollY = sessionStorage.getItem('scrollY');
     const initialCount = savedScrollY
       ? projectsWithIndices.length
       : Math.min(ITEMS_PER_BATCH, projectsWithIndices.length);
