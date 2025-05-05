@@ -207,8 +207,10 @@ export const GridItem = memo(
     
     // AJOUT YANN
     const handleClick = () => {
-      sessionStorage.setItem('scrollY', window.scrollY.toString());
-    };
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('scrollY:/', String(window.scrollY))
+      }
+    }
     
 
     if (!isVisible && !hasStartedLoading) {
