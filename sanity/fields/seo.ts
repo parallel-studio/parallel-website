@@ -18,24 +18,24 @@ export const seoFields = ({
       name: 'metaTitle',
       type: 'string',
       group: GroupType.SEO,
-      title: 'Meta Title',
+      title: 'Meta Title (55-60 char)',
       components: {
         input: CharCountInput,
       },
       options: {
-        maxLength: 65,
+        maxLength: 65, // nécessaire pour que le compteur sache quoi afficher
       },
     }),
     defineField({
       name: 'metaDescription',
       type: 'text',
       group: GroupType.SEO,
-      title: 'Meta Description',
+      title: 'Meta Description (160 char)',
       components: {
         input: CharCountInput,
       },
       options: {
-        maxLength: 160, 
+        maxLength: 160, // nécessaire pour que le compteur sache quoi afficher
       },
     }),
   ]
