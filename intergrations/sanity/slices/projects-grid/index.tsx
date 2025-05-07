@@ -78,12 +78,10 @@ export const ProjectsGrid: FC<ProjectsGridProps> = ({ projects }) => {
 
   // AJOUT YANN
   useEffect(() => {
-    const savedY = sessionStorage.getItem('scrollY:/')
-    if (savedY) {
-      setTimeout(() => {
-        window.scrollTo(0, parseInt(savedY, 10))
-        sessionStorage.removeItem('scrollY:/')
-      }, 50)
+    const savedScrollY = sessionStorage.getItem('scrollY')
+    if (savedScrollY) {
+      window.scrollTo(0, parseInt(savedScrollY, 10))
+      sessionStorage.removeItem('scrollY')
     }
   }, [])
 

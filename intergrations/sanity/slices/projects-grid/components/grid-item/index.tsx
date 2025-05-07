@@ -201,13 +201,12 @@ export const GridItem = memo(
       onVideoLoaded?.()
     }, [resetVideoPosition, onVideoLoaded])
 
-    // AJOUT YANN !!
+
     const handleClick = () => {
       if (typeof window !== 'undefined') {
-        sessionStorage.setItem('scrollY:/', String(window.scrollY))
+        sessionStorage.setItem('scrollY', String(window.scrollY))
       }
     }
-
 
     if (!isVisible && !hasStartedLoading) {
       return (
@@ -221,10 +220,11 @@ export const GridItem = memo(
 
     return (
       <div ref={itemRef} className={cn(s.grid_item, className)} style={style}>
-        <TransitionLink slug={`work/${slug}` onClick={handleClick}}>
+        <TransitionLink slug={`work/${slug}`} scroll={false}>
           <div
             className={s.grid_item__video}
             onMouseEnter={handleMouseEnter}
+            onClick={handleClick}
             onMouseLeave={handleMouseLeave}
           >
             <MuxPlayer

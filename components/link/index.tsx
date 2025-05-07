@@ -23,6 +23,13 @@ export const TransitionLink = ({
   const router = useRouter()
   const pathname = usePathname()
 
+    // AJOUT YANN !!
+    const handleClick = () => {
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('scrollY', String(window.scrollY))
+      }
+    }
+
   if (isExternal && url) {
     return (
       <a
@@ -38,7 +45,7 @@ export const TransitionLink = ({
 
   if (slug) {
     return (
-      <Link className={cn(className)} href={`/${slug}`} scroll={false}> 
+      <Link className={cn(className)} href={`/${slug}`}  onClick={handleClick} scroll={false}> 
         {children}
       </Link>
     )
