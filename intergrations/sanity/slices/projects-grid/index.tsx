@@ -76,29 +76,11 @@ export const ProjectsGrid: FC<ProjectsGridProps> = ({ projects }) => {
     [projects]
   )
 
-  //YANN CHARGEMENT INITIAL
-  useEffect(() => {
-    let initialCount = Math.min(ITEMS_PER_BATCH, projectsWithIndices.length)
-  
-    if (typeof window !== 'undefined') {
-      const savedScrollY = sessionStorage.getItem('scrollY')
-      if (savedScrollY) {
-        const y = parseInt(savedScrollY, 10)
-        const estimatedHeight = 600 // ajustable selon la hauteur de chaque GridItem
-        const needed = Math.ceil(y / estimatedHeight) + 4
-        initialCount = Math.min(needed, projectsWithIndices.length)
-      }
-    }
-  
-    setTargetCount(initialCount)
-  }, [projectsWithIndices])
-  /*
   // Chargement initial
   useEffect(() => {
     const initialCount = Math.min(ITEMS_PER_BATCH, projectsWithIndices.length)
     setTargetCount(initialCount)
   }, [projectsWithIndices])
-  */
 
   // Mise à jour de visibleProjects basée sur targetCount
   useEffect(() => {
