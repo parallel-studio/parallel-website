@@ -2,7 +2,7 @@ import { type SlugValidationContext, defineField } from 'sanity'
 
 import { GroupType } from '~/sanity/lib/groups'
 
-import { CharCountInput } from '../components/CharCountInput'
+import { CharCountInput } from '~/sanity/components/CharCountInput'
 
 type SeoFieldTypes = ReturnType<typeof defineField>
 
