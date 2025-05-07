@@ -2,6 +2,7 @@ import { SliceMachine } from '~/intergrations/sanity/slices'
 import { sanityFetch } from '~/sanity/lib/client'
 import { PARALLEL_PAGE_QUERY } from '~/sanity/queries'
 import { type PARALLEL_PAGE_QUERYResult } from '~/sanity/types'
+import { ScrollRestorer } from '~/components/ScrollRestorer' // AJOUT YANN
 
 type PageProps = {
   params: Promise<{
@@ -30,5 +31,15 @@ export default async function Page(props: PageProps) {
     params: { language: 'en', slug: paramsData.slug },
   })
 
-  return <SliceMachine slices={pageData?.pageBuilder ?? []} />
+  // Modif Yann:
+  // return <SliceMachine slices={pageData?.pageBuilder ?? []} />
+  return (
+    <>
+      <ScrollRestorer />
+      <SliceMachine slices={pageData?.pageBuilder ?? []} />
+    </>
+  )
 }
+
+//AJOUT YANN
+
