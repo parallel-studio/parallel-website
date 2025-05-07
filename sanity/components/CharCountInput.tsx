@@ -22,7 +22,7 @@ export function CharCountInput({ value, onChange, schemaType }: CharCountInputPr
   else if (percent <= 10) counterColor = 'warning'
 
   const inputStyle =
-    counterColor === 'critical' ? { borderColor: 'red' } :
+    counterColor === 'critical' ? { borderColor: '#FF0000' } :
     counterColor === 'warning' ? { borderColor: 'orange' } :
     {}
 
