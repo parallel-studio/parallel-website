@@ -1,10 +1,12 @@
 'use client'
 import cn from 'clsx'
 import dynamic from 'next/dynamic'
-import { type FC, useRef } from 'react'
+import { type FC, useEffect, useRef, useState } from 'react'
 import { Image } from '~/components/image'
 import type { CustomColumnMediaGrid as ICustomColumnMediaGrid } from '~/sanity/types'
 import s from './custom-column-media.module.css'
+
+
 const MuxPlayer = dynamic(() => import('@mux/mux-video-react'), { ssr: false })
 
 export interface IMedia {
@@ -42,6 +44,51 @@ export const CustomColumnMediaGrid: FC<CustomColumnMediaGridProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
 
+  // AJOUT YANN
+    const videoRefs = useRef<HTMLVideoElement[]>([])
+    videoRefs.current = [] // Reset refs on every render
+    const handleMuxRef = (el: any) => {
+      if (el?.video && !videoRefs.current.includes(el.video)) {
+        videoRefs.current.push(el.video)
+      }
+    }
+    useEffect(() => {
+      const videos = videoRefs.current
+    
+      const allReady = () => videos.every((video) => video.readyState >= 3) // HAVE_FUTURE_DATA
+    
+      const tryPlayAll = () => {
+        videos.forEach((video) => {
+          video.currentTime = 0
+          video.play().catch(() => {})
+        })
+      }
+    
+      const checkAndPlay = () => {
+        if (allReady()) {
+          tryPlayAll()
+        } else {
+          const interval = setInterval(() => {
+            if (allReady()) {
+              clearInterval(interval)
+              tryPlayAll()
+            }
+          }, 50)
+        }
+      }
+    
+      if (videos.length > 1) {
+        checkAndPlay()
+      }
+    
+      // Optional cleanup
+      return () => {
+        videoRefs.current = []
+      }
+    }, [media])
+  // FIN AJOUT YANN  
+
+
   const getMuxPlaceholderTimestamp = (media: IMedia) => {
     return  media.muxPlaceholderTimestamp
     ? Number.parseFloat(media.muxPlaceholderTimestamp)
@@ -74,6 +121,7 @@ export const CustomColumnMediaGrid: FC<CustomColumnMediaGridProps> = ({
             />
           ) : (
             <MuxPlayer
+              ref={handleMuxRef} // AJOUT YANN !
               className={cn(s.sliderItem__muxPlayer, 'mobile:w-screen', {
                 [s.autoplayMode]: media.autoplay,
               })}
