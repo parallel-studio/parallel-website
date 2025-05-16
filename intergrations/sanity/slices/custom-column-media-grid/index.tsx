@@ -53,6 +53,10 @@ export const CustomColumnMediaGrid: FC<CustomColumnMediaGridProps> = ({
       }
     }
     useEffect(() => {
+      if (typeof window === 'undefined') return
+      const isMobile = /Mobi|Android/i.test(navigator.userAgent)
+
+      if (isMobile) return // Ne pas forcer .play() sur mobile
       const videos = videoRefs.current
     
       const allReady = () => videos.every((video) => video.readyState >= 3) // HAVE_FUTURE_DATA
