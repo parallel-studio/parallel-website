@@ -93,7 +93,7 @@ svg.icon {
 }
 
 .rich_text-h3 {
-  font-size: min(max(1rem, 1.3014vw), 2.625rem);
+  font-size: min(max(1rem, 2vw /*1.3014vw */), 2vw /* 2.625rem */ );
 }
 
 em {
