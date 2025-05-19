@@ -1,8 +1,6 @@
 'use client'
 
 import { useEffect } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
-import { saveScrollPosition, restoreScrollWhenReady } from '~/hooks/scroll'
 import { SliceMachine } from '~/intergrations/sanity/slices'
 import type { Slice } from '~/sanity/types'
 
@@ -13,25 +11,49 @@ export default function ClientPageWrapper({
   slug: string
   slices: Slice[]
 }) {
-  const router = useRouter()
-  const pathname = usePathname()
-
   const isWorkPage = slug === 'work'
 
+  // Désactive le scrollRestoration automatique
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+  }, [])
+
+  // Sauvegarde du scroll
+  useEffect(() => {
+    const saveScrollPosition = () => {
+      sessionStorage.setItem('scrollY-work', window.scrollY.toString())
+    }
+
+    window.addEventListener('beforeunload', saveScrollPosition)
+    return () => {
+      window.removeEventListener('beforeunload', saveScrollPosition)
+    }
+  }, [])
+
+  // Restauration du scroll après chargement des vignettes
   useEffect(() => {
     if (!isWorkPage) return
 
-    const handleRouteChangeStart = () => saveScrollPosition('work')
-    window.addEventListener('beforeunload', () => saveScrollPosition('work'))
-    router.events?.on?.('routeChangeStart', handleRouteChangeStart)
+    const saved = sessionStorage.getItem('scrollY-work')
+    if (saved) {
+      const targetY = parseInt(saved, 10)
+      const tryRestore = () => {
+        const items = document.querySelectorAll('.scroll-track')
+        if (items.length >= 24) {
+          window.scrollTo(0, targetY)
+          return true
+        }
+        return false
+      }
 
-    restoreScrollWhenReady('work', () => {
-      const items = document.querySelectorAll('.scroll-track')
-      return items.length >= 24
-    })
-
-    return () => {
-      router.events?.off?.('routeChangeStart', handleRouteChangeStart)
+      let attempts = 0
+      const interval = setInterval(() => {
+        const ok = tryRestore()
+        if (ok || attempts > 40) clearInterval(interval)
+        attempts++
+      }, 100)
     }
   }, [isWorkPage])
 
