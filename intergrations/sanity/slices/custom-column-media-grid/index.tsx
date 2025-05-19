@@ -44,7 +44,6 @@ export const CustomColumnMediaGrid: FC<CustomColumnMediaGridProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
 
-  /*
   // AJOUT YANN
     const videoRefs = useRef<HTMLVideoElement[]>([])
     videoRefs.current = [] // Reset refs on every render
@@ -92,7 +91,7 @@ export const CustomColumnMediaGrid: FC<CustomColumnMediaGridProps> = ({
       }
     }, [media])
   // FIN AJOUT YANN  
-*/
+
 
   const getMuxPlaceholderTimestamp = (media: IMedia) => {
     return  media.muxPlaceholderTimestamp
@@ -126,7 +125,7 @@ export const CustomColumnMediaGrid: FC<CustomColumnMediaGridProps> = ({
             />
           ) : (
             <MuxPlayer
-              // ref={handleMuxRef} // AJOUT YANN !
+              ref={handleMuxRef} // AJOUT YANN !
               className={cn(s.sliderItem__muxPlayer, 'mobile:w-screen', {
                 [s.autoplayMode]: media.autoplay,
               })}
