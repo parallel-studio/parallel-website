@@ -38,7 +38,7 @@ const components = {
       <h2 className={s.rich_text_h2}>{children}</h2>
     ),
     h3: ({ children }: { children: string }) => (
-      <h3 className="rich_text-h3">{children}</h3>
+      <h3 className={s.rich_text_h3}>{children}</h3>
     ),
     h4: ({ children }: { children: string }) => (
       <h4 className="rich_text-h4">{children}</h4>
