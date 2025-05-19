@@ -1,7 +1,16 @@
+'use client'
+
+import { useEffect } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
+import { saveScrollPosition, restoreScrollWhenReady } from '~/hooks/scroll'
+
+
 import { SliceMachine } from '~/intergrations/sanity/slices'
 import { sanityFetch } from '~/sanity/lib/client'
 import { PARALLEL_PAGE_QUERY } from '~/sanity/queries'
 import { type PARALLEL_PAGE_QUERYResult } from '~/sanity/types'
+import ClientPageWrapper from '~/components/ClientPageWrapper'
+
 
 type PageProps = {
   params: Promise<{
@@ -23,6 +32,8 @@ export async function generateMetadata(props: PageProps) {
   }
 }
 
+
+/* 
 export default async function Page(props: PageProps) {
   const paramsData = await props.params
   const pageData = await sanityFetch<PARALLEL_PAGE_QUERYResult>({
@@ -30,5 +41,22 @@ export default async function Page(props: PageProps) {
     params: { language: 'en', slug: paramsData.slug },
   })
 
+ 
   return <SliceMachine slices={pageData?.pageBuilder ?? []} />
+  */
+ 
+// MODIF YANN
+export default async function Page(props: PageProps) {
+  const paramsData = await props.params
+  const pageData = await sanityFetch<PARALLEL_PAGE_QUERYResult>({
+    query: PARALLEL_PAGE_QUERY,
+    params: { language: 'en', slug: paramsData.slug },
+  })
+
+  return (
+    <ClientPageWrapper
+      slug={paramsData.slug}
+      slices={pageData?.pageBuilder ?? []}
+    />
+  )
 }

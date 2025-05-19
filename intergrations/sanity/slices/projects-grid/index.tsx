@@ -163,7 +163,7 @@ export const ProjectsGrid: FC<ProjectsGridProps> = ({ projects }) => {
               }}
               slug={project?.slug?.current || ''}
               key={uniqueKey}
-              className={`${s.grid__item}`}
+              className={`${s.grid__item} scroll-track`} // 👈 AJOUT YANN précédemment className={`${s.grid__item}`}
               title={project.details?.customer || ''}
               description={project.details?.title || ''}
               index={absoluteIndex}
