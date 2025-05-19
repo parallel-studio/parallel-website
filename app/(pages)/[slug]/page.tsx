@@ -1,10 +1,3 @@
-'use client'
-
-import { useEffect } from 'react'
-import { useRouter, usePathname } from 'next/navigation'
-import { saveScrollPosition, restoreScrollWhenReady } from '~/hooks/scroll'
-
-
 import { SliceMachine } from '~/intergrations/sanity/slices'
 import { sanityFetch } from '~/sanity/lib/client'
 import { PARALLEL_PAGE_QUERY } from '~/sanity/queries'
