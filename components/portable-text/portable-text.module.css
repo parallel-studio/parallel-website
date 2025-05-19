@@ -42,7 +42,7 @@
 
 .rich_text_h3 {
   font-size: min(max(1rem, 1.3014vw), 1.625rem);
-  color: blue;
+  color: var(--logo-color);
   font-weight: 400;
 }
 

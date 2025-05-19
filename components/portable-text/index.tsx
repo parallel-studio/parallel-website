@@ -40,12 +40,14 @@ const components = {
     h3: ({ children }: { children: string }) => (
       <h3 className={s.rich_text_h3}>{children}</h3>
     ),
+    /*
     h4: ({ children }: { children: string }) => (
       <h4 className="rich_text-h4">{children}</h4>
     ),
     h5: ({ children }: { children: string }) => (
       <h5 className="rich_text-h5">{children}</h5>
     ),
+    */
     'link-large': ({ children }: { children: string }) => (
       <LinkComponent className={s.link_large}>{children}</LinkComponent>
     ),
